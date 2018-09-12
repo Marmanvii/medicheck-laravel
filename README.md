@@ -1,2 +1,2 @@
 # medicheck-laravel
-A simple web system to administrate single hospital.
+A simple web system to administrate a single hospital.
