@@ -14,13 +14,17 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+          $table->increments('id');
+          $table->string('rut')->unique();
+          $table->string('name');
+          $table->string('last_name');
+          $table->string('email')->unique();
+          $table->string('password');
+          $table->string('type'); // Usuario=user; Secretraria=secre; Médico=medic; Administrador=admi;
+          $table->string('especialidad'); // solo los médicos tienen especialidad
+          $table->integer('valor'); // valor de la consulta médica
+          $table->rememberToken();
+          $table->timestamps();
         });
     }
 
