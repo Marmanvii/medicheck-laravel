@@ -4,6 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+# Si se utiliza Linux comentar la siguiente linea
+##########################################################
+use Illuminate\Support\Facades\Schema;
+##########################################################
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +18,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        # Si se utiliza Linux comentar la siguiente linea
+        ##########################################################
+        Schema::defaultStringLength(191);
+        ##########################################################
     }
 
     /**
