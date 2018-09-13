@@ -51,7 +51,16 @@ return [
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'strict' => true,
-            'engine' => null,
+            # Si se utiliza Linux comentar la siguiente linea y descomentar la null
+            ##########################################################
+            'engine' => 'innoDB ROW_FORMAT=DYNAMIC',
+            ##########################################################
+            # Si se utiliza Linux descomentar la siguiente linea y comentar la de arriba
+            ##########################################################
+            #'engine' => null,
+            ##########################################################
+
+
         ],
 
         'pgsql' => [
