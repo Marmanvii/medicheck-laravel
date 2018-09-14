@@ -6,79 +6,57 @@ use Illuminate\Http\Request;
 
 class AppointmentsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+     public function __construct() #Se utiliza el middleware para identificar usuarios activos en la sesión.
+     {
+         $this->middleware('auth');
+     }
     public function index()
     {
-        //
+        $appointments = Appointment::all();
+        return view('appointments.index', compact('appointments');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function show(Appointment $appointment){
+      return view('appointments.show', compact('appointment'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function create(Request $request){
+      $medico = $request->medics_id;
+      $fecha = $request->fecha;
+      $bloque = $request->bloque;
+      return view('appointments.create', compact('medico','fecha','bloque'));
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function store(){
+      $this->validate(request(),[ #Validaciones para los atributos
+      'patient_rut' => 'required|max:255|cl_rut', #cl_rut es una función adquirida con composer para validar RUT
+      'fecha' => 'required|after_or_equal:today',
+      'bloque' => 'required',
+      'medics_id' => 'required',
+      'patient_id' => 'required',
+      'telefono' => 'required|max:16',
+      'observacion' => 'required',
+      ]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $appointment = \App\Appointment::find($id);
+        $appointment->delete();
+        return redirect('appointments');
+    }
+    public function edit($id){
+      $appointments = Appointment::all();
+      return view('appointments.edit', compact('appointments'));
+    }
+    public function update(Request $request, $id){
+      $appointments = \App\Appointment::find($id);
+      $appointments->id = request('id');
+      $appointments->patient_rut = request('patient_rut');
+      $appointments->fecha = request('fecha');
+      $appointments->bloque = request('bloque');
+      $appointments->medics_id = request('medics_id');
+      $appointments->observacion = request('observacion');
+      $appointments->telefono = request('telefono');
+      $appointments->patient_id = request('patient_id');
+      $appointments->save();
+
+      return redirect('/appointments');
     }
 }
