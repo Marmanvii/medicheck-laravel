@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Appointment;
+use App\User;
 
 class AppointmentsController extends Controller
 {
@@ -10,10 +12,10 @@ class AppointmentsController extends Controller
      {
          $this->middleware('auth');
      }
-    public function index()
-    {
+    public function index()    {
         $appointments = Appointment::all();
-        return view('appointments.index', compact('appointments');
+        $users = User::all();
+        return view('appointments.index', compact('appointments','users'));
     }
     public function show(Appointment $appointment){
       return view('appointments.show', compact('appointment'));
