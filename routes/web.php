@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+#CITAS#
+Route::get('/appointments', 'AppointmentsController@index');
+Route::any('/appointments/create', 'AppointmentsController@create');
+Route::post('/appointments', 'AppointmentsController@store');
