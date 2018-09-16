@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+#ADMIN#
+Route::get('/admin', 'AdminController@index');
+
 #CITAS#
 Route::get('/appointments', 'AppointmentsController@index');
 Route::any('/appointments/create', 'AppointmentsController@create');

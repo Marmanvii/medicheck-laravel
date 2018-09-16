@@ -24,6 +24,11 @@
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                     </li>
                 @else
+                  @if(Auth::user()->type=='admin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Panel de Administrador</a>
+                    </li>
+                  @endif
                   <li class="nav-item">
                       <a class="nav-link" href="/appointments">Mis Citas</a>
                   </li>
