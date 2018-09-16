@@ -22,14 +22,11 @@ class AppointmentsController extends Controller
       return view('appointments.show', compact('appointment'));
     }
     public function create(Request $request){
-      $medico = $request->medics_id;
-      $fecha = $request->fecha;
-      $bloque = $request->bloque;
-      return view('appointments.create', compact('medico','fecha','bloque'));
+      $users = User::all();
+      return view('appointments.create', compact('users'));
     }
     public function store(){
       $this->validate(request(),[ #Validaciones para los atributos
-      'patient_rut' => 'required|max:255|cl_rut', #cl_rut es una función adquirida con composer para validar RUT
       'fecha' => 'required|after_or_equal:today',
       'bloque' => 'required',
       'medics_id' => 'required',
@@ -37,6 +34,18 @@ class AppointmentsController extends Controller
       'telefono' => 'required|max:16',
       'observacion' => 'required',
       ]);
+
+          $appointment = new Appointment;
+          $appointment->bloque = request('bloque');
+          $appointment->fecha = request('fecha');
+          $appointment->medics_id = request('medics_id');
+          $appointment->patient_id = request('patient_id');
+          $appointment->telefono = request('telefono');
+          $appointment->observacion = request('observacion');
+
+          $appointment->save(); #Se adquieren los atributos según el nombre asignado en la vista y se almacenan en la DB.
+
+        return redirect('/appointments');
     }
     public function destroy($id)
     {
