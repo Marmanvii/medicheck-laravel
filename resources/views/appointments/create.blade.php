@@ -1,6 +1,8 @@
 @extends('layout.master')
+@section('styles')
+@endsection
 @section('content') <!--Se define como seccion para ser incluido en la seccion contenido en el layout principal-->
-  <h1 align="center">Registrar Nueva Cita</h1>
+  <h1 align="center">Registrar cita</h1>
   <div class="card" style="text-align: center;width:80%; margin:0px auto;width: 64rem;">
     <div class="card-body">
   <form method="POST" style="text-align: center;width:80%; margin:0px auto;" action="/appointments">
