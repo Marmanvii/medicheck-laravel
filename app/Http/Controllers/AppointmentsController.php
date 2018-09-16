@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Appointment;
 use App\User;
+use App\Schedule;
 
 class AppointmentsController extends Controller
 {
@@ -61,4 +62,10 @@ class AppointmentsController extends Controller
 
       return redirect('/appointments');
     }
+    public function medics_information(){
+        $users = User::all();
+        $schedules = Schedule::all();
+        return view('appointments.medics_information', compact('schedules','users'));
+    }
+
 }

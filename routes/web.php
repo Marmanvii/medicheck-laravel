@@ -23,3 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/appointments', 'AppointmentsController@index');
 Route::any('/appointments/create', 'AppointmentsController@create');
 Route::post('/appointments', 'AppointmentsController@store');
+
+#MÉDICOS#
+Route::get('/medics', 'AppointmentsController@medics_information');
