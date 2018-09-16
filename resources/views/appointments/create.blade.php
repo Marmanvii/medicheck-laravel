@@ -1,6 +1,8 @@
 @extends('layout.master')
 @section('content') <!--Se define como seccion para ser incluido en la seccion contenido en el layout principal-->
   <h1 align="center">Registrar Nueva Cita</h1>
+  <div class="card" style="text-align: center;width:80%; margin:0px auto;width: 64rem;">
+    <div class="card-body">
   <form method="POST" style="text-align: center;width:80%; margin:0px auto;" action="/appointments">
   {{ csrf_field() }} <!--Sirve para evitar ataques modificando el html desde el navegador.-->
   <div class="form-row">
@@ -20,6 +22,24 @@
           @endforeach
         </select>
       </div>
+      <div class="form-group col-md-8">
+        <label for="bloque">Bloque</label>
+        <select id="bloque" class="form-control" name="bloque" required>
+          <option value="1">8:30 - 9:00</option>
+          <option value="2">9:00 - 9:30</option>
+          <option value="3">9:30 - 10:00</option>
+          <option value="4">10:00 - 10:30</option>
+          <option value="5">10:30 - 11:00</option>
+          <option value="6">11:00 - 11:30</option>
+          <option value="7">11:30 - 12:00</option>
+          <option value="8">12:00 - 12:30</option>
+          <option value="9">12:30 - 13:00</option>
+          <option value="10">15:00 - 15:30</option>
+          <option value="11">15:30 - 16:00</option>
+          <option value="12">16:00 - 16:30</option>
+          <option value="13">16:30 - 17:00</option>
+        </select>
+      </div>
     </div>
     <div class="col" align="center">
       <div class="form-group col-md-8">
@@ -33,9 +53,9 @@
     </div>
   </div>
     <input name="patient_id" type="hidden" value="{{old (Auth::id(), Auth::id())}}">
-    <input name="bloque" type="hidden" value="1">
     <button type="submit" align="center"class="btn">Ingresar</button>
-    <a class="btn btn-outline-light" role="main" href="/appointments">Regresar</a>
+    <a class="btn btn-danger" role="main" href="/appointments">Regresar</a>
   </form>
+</div></div>
 @include('layout.errors')
 @endsection

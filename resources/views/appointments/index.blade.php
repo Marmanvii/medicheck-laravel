@@ -27,7 +27,45 @@ $i = 1;
               @endif
             @endforeach
             <td>{{$appointments->fecha}}</td>
-            <td>{{$appointments->bloque}}</td>
+            @if ($appointments->bloque == 1)
+                <td>8:30 - 9:00</td>
+              @endif
+              @if($appointments->bloque == 2)
+                <td>9:00 - 9:30</td>
+              @endif
+              @if ($appointments->bloque == 3)
+                <td>9:30 - 10:00</td>
+              @endif
+              @if ($appointments->bloque == 4)
+                <td>10:00 - 10:30</td>
+              @endif
+              @if ($appointments->bloque == 5)
+                <td>10:30 - 11:00</td>
+              @endif
+              @if ($appointments->bloque == 6)
+                <td>11:00 - 11:30</td>
+              @endif
+              @if ($appointments->bloque == 7)
+                <td>11:30 - 12:00</td>
+              @endif
+              @if ($appointments->bloque == 8)
+                <td>12:00 - 12:30</td>
+              @endif
+              @if ($appointments->bloque == 9)
+                <td>12:30 - 13:00</td>
+              @endif
+              @if ($appointments->bloque == 10)
+                <td>15:00 - 15:30</td>
+              @endif
+              @if ($appointments->bloque == 11)
+                <td>15:30 - 16:00</td>
+              @endif
+              @if ($appointments->bloque == 12)
+                <td>16:00 - 16:30</td>
+              @endif
+              @if ($appointments->bloque == 13)
+                <td>16:30 - 17:00</td>
+              @endif
           </tr>
         @endif
       @endforeach
