@@ -6,7 +6,7 @@ $i = 1;
   <h2 class="text-center">Médicos</h2>
   <div class="card-columns" style="width:80%; margin:0px auto;">
     @foreach ($users as $user)
-      @if($user->type == 'medi')
+      @if($user->type == 'medic')
         <div class="card text-center">
           <div class="card-body">
             <h4 class="card-title" card text>{{$user->name}} {{$user->last_name}}</h4>
