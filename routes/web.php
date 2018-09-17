@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 #ADMIN#
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin/addmedic', 'AdminController@create');
+Route::post('/admin', 'AdminController@store');
 
 #CITAS#
 Route::get('/appointments', 'AppointmentsController@index');

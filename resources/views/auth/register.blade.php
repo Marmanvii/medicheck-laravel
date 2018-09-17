@@ -66,7 +66,33 @@
                                 @endif
                             </div>
                         </div>
+                        @if(Auth::user()->type=='admin')
+                          <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right" for="especialidad">especialidad</label>
+                              <div class="col-md-6">
+                                <select id="especialidad" class="form-control" name="especialidad" required>
+                                  <option value="1">especialidad1</option>
+                                  <option value="2">especialidad2</option>
+                                  <option value="3">especialidad3</option>
+                                  <option value="4">especialidad4</option>
+                                  <option value="5">especialidad5</option>
+                                </select>
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="valor" class="col-md-4 col-form-label text-md-right">{{ __('Valor') }}</label>
 
+                              <div class="col-md-6">
+                                  <input id="valor" type="number" class="form-control{{ $errors->has('valor') ? ' is-invalid' : '' }}" name="valor" value="{{ old('valor') }}" required autofocus>
+
+                                  @if ($errors->has('valor'))
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $errors->first('valor') }}</strong>
+                                      </span>
+                                  @endif
+                              </div>
+                          </div>
+                        @endif
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -96,9 +122,14 @@
                                 </button>
                             </div>
                         </div>
-                        <input type="hidden" id="type" name="type" value="user">
-                        <input type="hidden" id="especialidad" name="especialidad" value="nada">
-                        <input type="hidden" id="valor" name="valor" value="0">
+                        @if(Auth::user()->type=='admin')
+                          <input type="hidden" id="type" name="type" value="medic">
+                        @else
+                          <input type="hidden" id="type" name="type" value="user">
+                          <input type="hidden" id="especialidad" name="especialidad" value="nada">
+                          <input type="hidden" id="valor" name="valor" value="0">
+                        @endif
+
                     </form>
                 </div>
             </div>
