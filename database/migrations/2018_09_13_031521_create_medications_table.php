@@ -15,8 +15,8 @@ class CreateMedicationsTable extends Migration
     {
         Schema::create('medications', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('file_id');
-            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
+            $table->unsignedInteger('appointment_id');
+            $table->foreign('appointment_id')->references('id')->on('appointments')->onDelete('cascade');
             $table->string('nombre');
             $table->string('intervalo');
             $table->string('duracion');

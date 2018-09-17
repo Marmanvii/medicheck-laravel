@@ -3,80 +3,55 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\File;
 
 class FilesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Request $request)
     {
-        //
+      $id_appointment = $request->appointment_id;
+      return view('files.create', compact('id_appointment'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      $this->validate(request(),[ #Validaciones para los atributos
+      'descripcion' => 'required',
+      'tratamiento' => 'required',
+      'diagnostico' => 'required',
+      ]);
+
+          $file = new File;
+          $file->appointment_id = request('id_appointment');
+          $file->descripcion = request('descripcion');
+          $file->tratamiento = request('tratamiento');
+          $file->diagnostico = request('diagnostico');
+
+          $file->save(); #Se adquieren los atributos según el nombre asignado en la vista y se almacenan en la DB.
+
+        return redirect('/medic_day');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

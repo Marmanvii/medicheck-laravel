@@ -29,6 +29,11 @@
                         <a class="nav-link" href="/admin">Panel de Administrador</a>
                     </li>
                   @endif
+                  @if(Auth::user()->type=='medic')
+                    <li class="nav-item">
+                        <a class="nav-link" href="/medic_day">Panel Diario</a>
+                    </li>
+                  @endif
                   <li class="nav-item">
                       <a class="nav-link" href="/appointments">Mis Citas</a>
                   </li>

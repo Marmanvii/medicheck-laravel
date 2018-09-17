@@ -31,3 +31,6 @@ Route::post('/appointments', 'AppointmentsController@store');
 
 #MÉDICOS#
 Route::get('/medics', 'AppointmentsController@medics_information');
+Route::get('/medic_day', 'AppointmentsController@medics_day');
+Route::any('/medics/filescreate', 'FilesController@create');
+Route::post('/medicfiles', 'FilesController@store');
