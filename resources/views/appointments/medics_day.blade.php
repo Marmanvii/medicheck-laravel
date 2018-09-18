@@ -4,7 +4,7 @@ $i = 1;
 ?>
 @section('content')
   <h3 class="text-center">Citas del Día</h3>
-  <table class="table table-striped table-bordered table-hover" style="width:80%; margin:0px auto;">
+  <table class="table table-striped table-bordered table-hover" style="width:80%; margin:0px auto; text-align:center;">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -71,15 +71,16 @@ $i = 1;
               @endif
             @endforeach
             <td>
-
-              <div class="floatright">
-                <form action="/medics/filescreate" method="POST">
-                  {{csrf_field()}}
-                  <input name="appointment_id" type="hidden" value="{{$appointments->id}}">
-                  <button class="btn btn-outline-dark" type="submit">Files</button>
-                </form>
-              </div>
-
+              <form action="/medics/filescreate" method="POST">
+                {{csrf_field()}}
+                <input name="appointment_id" type="hidden" value="{{$appointments->id}}">
+                <button class="btn btn-dark btn-sm" type="submit">Add File</button>
+              </form>
+              <form action="/medics/medicationscreate" method="POST">
+                {{csrf_field()}}
+                <input name="appointment_id" type="hidden" value="{{$appointments->id}}">
+                <button class="btn btn-dark btn-sm" type="submit">Add Medicaments</button>
+              </form>
             </td>
           </tr>
         @endif
