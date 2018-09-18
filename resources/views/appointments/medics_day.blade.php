@@ -81,6 +81,11 @@ $i = 1;
                 <input name="appointment_id" type="hidden" value="{{$appointments->id}}">
                 <button class="btn btn-dark btn-sm" type="submit">Add Medicaments</button>
               </form>
+              <form action="/medics/record" method="POST">
+                {{csrf_field()}}
+                <input name="patient_id" type="hidden" value="{{$appointments->patient_id}}">
+                <button class="btn btn-dark btn-sm" type="submit">Show Record</button>
+              </form>
             </td>
           </tr>
         @endif

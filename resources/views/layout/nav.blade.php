@@ -31,7 +31,7 @@
                   @endif
                   @if(Auth::user()->type=='medic')
                     <li class="nav-item">
-                        <a class="nav-link" href="/medic_day">Panel Diario</a>
+                        <a class="nav-link" href="/medic_day">Citas del Día</a>
                     </li>
                   @endif
                   <li class="nav-item">
