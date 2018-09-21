@@ -28,6 +28,8 @@ Route::post('/admin', 'AdminController@store');
 Route::get('/appointments', 'AppointmentsController@index');
 Route::any('/appointments/create', 'AppointmentsController@create');
 Route::post('/appointments', 'AppointmentsController@store');
+Route::get('/appointments/select_fecha_medico', 'AppointmentsController@select_fecha_medico'); #Seleccionar fecha y médico.
+Route::get('/appointments/bloques_disponibles', 'AppointmentsController@bloques_disponibles');
 
 #MÉDICOS#
 Route::get('/medics', 'AppointmentsController@medics_information');
