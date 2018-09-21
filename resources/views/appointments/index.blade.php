@@ -11,11 +11,15 @@ $i = 1;
         <th scope="col">Médico</th>
         <th scope="col">Fecha</th>
         <th scope="col">Bloque</th>
+        @if(Auth::user()->type!='user')
+          <th scope="col">Teléfono</th>
+          <th scope="col">Observación</th>
+        @endif
       </tr>
     </thead>
     <tbody>
       @foreach ($appointments as $appointments)
-        @if(Auth::id()==$appointments->patient_id)
+        @if(Auth::id()==$appointments->patient_id  && Auth::user()->type=='user')
           <tr>
             <th scope="row">{{"$i"}}</th>
             <?php
@@ -66,6 +70,61 @@ $i = 1;
               @if ($appointments->bloque == 13)
                 <td>16:30 - 17:00</td>
               @endif
+          </tr>
+        @endif
+        @if(Auth::user()->type!='user')
+          <tr>
+            <th scope="row">{{"$i"}}</th>
+            <?php
+              $i = $i + 1;
+            ?>
+            @foreach ($users as $user)
+              @if($user->id == $appointments->medics_id)
+                <td>{{$user->name}}: {{$user->especialidad}}</td>
+              @endif
+            @endforeach
+            <td>{{$appointments->fecha}}</td>
+            @if ($appointments->bloque == 1)
+                <td>8:30 - 9:00</td>
+              @endif
+              @if($appointments->bloque == 2)
+                <td>9:00 - 9:30</td>
+              @endif
+              @if ($appointments->bloque == 3)
+                <td>9:30 - 10:00</td>
+              @endif
+              @if ($appointments->bloque == 4)
+                <td>10:00 - 10:30</td>
+              @endif
+              @if ($appointments->bloque == 5)
+                <td>10:30 - 11:00</td>
+              @endif
+              @if ($appointments->bloque == 6)
+                <td>11:00 - 11:30</td>
+              @endif
+              @if ($appointments->bloque == 7)
+                <td>11:30 - 12:00</td>
+              @endif
+              @if ($appointments->bloque == 8)
+                <td>12:00 - 12:30</td>
+              @endif
+              @if ($appointments->bloque == 9)
+                <td>12:30 - 13:00</td>
+              @endif
+              @if ($appointments->bloque == 10)
+                <td>15:00 - 15:30</td>
+              @endif
+              @if ($appointments->bloque == 11)
+                <td>15:30 - 16:00</td>
+              @endif
+              @if ($appointments->bloque == 12)
+                <td>16:00 - 16:30</td>
+              @endif
+              @if ($appointments->bloque == 13)
+                <td>16:30 - 17:00</td>
+              @endif
+              <td>{{$appointments->telefono}}</td>
+              <td>{{$appointments->observacion}}</td>
           </tr>
         @endif
       @endforeach
