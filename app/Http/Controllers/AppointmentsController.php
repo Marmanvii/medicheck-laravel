@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Appointment;
 use App\User;
 use App\Schedule;
+use App\File;
+use App\Medication;
 
 class AppointmentsController extends Controller
 {
@@ -77,6 +79,19 @@ class AppointmentsController extends Controller
         $users = User::all();
         $schedules = Schedule::all();
         return view('appointments.medics_information', compact('schedules','users'));
+    }
+    public function medics_day(){
+      $appointments = Appointment::all();
+      $files = File::all();
+      $users = User::all();
+      return view('appointments.medics_day', compact('appointments','users', 'files'));
+    }
+    public function show_record(Request $request){
+      $patient = $request->patient_id;
+      $appointments = Appointment::all();
+      $medications = Medication::all();
+      $files = File::all();
+      return view('appointments.record', compact('appointments','medications','files', 'patient'));
     }
     public function select_fecha_medico(Request $request){#Seleccionamos una fecha y medico
       $medics=User::select('id','name','last_name','especialidad')->where('type', 'medic')->take(100)->get(); #Se seleccionan los medicos pertenecientes al hospital anteriormente seleccionado.
