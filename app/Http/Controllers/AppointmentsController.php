@@ -11,10 +11,9 @@ use App\Medication;
 
 class AppointmentsController extends Controller
 {
-     public function __construct() #Se utiliza el middleware para identificar usuarios activos en la sesión.
-     {
+    public function __construct(){ #Se utiliza el middleware para identificar usuarios activos en la sesión.
          $this->middleware('auth');
-     }
+    }
     public function index()    {
         $appointments = Appointment::all();
         $users = User::all();
