@@ -15,7 +15,7 @@
         <select id="medics_id" class="form-control" name="medics_id" required>
           <option value="" disabled selected>Seleccione un médico</option>
           @foreach($medics as $medic) <!--Función de laravel, se busca por fila de la tabla, adquiriendo un medico y sus datos por ciclo, se obtiene desde el controlador, "as" sirve a modo de alias-->
-              <option value="{{$medic->id}}">{{$medic->name}} {{$medic->last_name}}: {{$medic->especialidad}}</option>
+              <option value="{{$medic->id}}">{{$medic->name}} {{$medic->last_name}}</option>
           @endforeach
         </select>
       </div>
