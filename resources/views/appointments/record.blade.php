@@ -11,6 +11,7 @@
                 <h4 class="card-title" card text>{{$file->diagnostico}}</h4>
                 <h5 class="card-subtitle" card text>{{$file->tratamiento}}</h5>
                 <h6 class="card-text" card text>{{$file->descripcion}}</h6>
+                <h6 class="card-text" card text>{{$appointment->fecha}}</h6>
                 <table class="table table-sm" style="width:80%; margin:0px auto;">
                   <thead>
                     <tr>
@@ -30,7 +31,7 @@
                       @endif
                     @endforeach
                   </tbody>
-                </table> 
+                </table>
                 <p class="card-text"><small class="text-muted">MediCheck</small></p>
               </div>
             </div>
