@@ -71,19 +71,24 @@ $i = 1;
               @endif
             @endforeach
             <td>
-
+              <?php
+                $j = 0;
+              ?>
               @foreach ($files as $file)
                 @if($appointments->id == $file->appointment_id)
-                  <button class="btn btn-dark btn-sm" type="button" disabled>Add File if</button>
-                @else
-                  <form action="/medics/filescreate" method="POST">
-                    {{csrf_field()}}
-                    <input name="appointment_id" type="hidden" value="{{$appointments->id}}">
-                    <button class="btn btn-dark btn-sm" type="submit">Add File</button>
-                  </form>
+                  <button class="btn btn-dark btn-sm" type="button" disabled>Add File</button>
+                  <?php
+                    $j = 1;
+                  ?>
                 @endif
               @endforeach
-
+              @if ($j==0)
+                <form action="/medics/filescreate" method="POST">
+                  {{csrf_field()}}
+                  <input name="appointment_id" type="hidden" value="{{$appointments->id}}">
+                  <button class="btn btn-dark btn-sm" type="submit">Add File</button>
+                </form>
+              @endif
               <form action="/medics/medicationscreate" method="POST">
                 {{csrf_field()}}
                 <input name="appointment_id" type="hidden" value="{{$appointments->id}}">
