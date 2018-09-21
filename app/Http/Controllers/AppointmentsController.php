@@ -81,8 +81,9 @@ class AppointmentsController extends Controller
 
     public function medics_day(){
       $appointments = Appointment::all();
+      $files = File::all();
       $users = User::all();
-      return view('appointments.medics_day', compact('appointments','users'));
+      return view('appointments.medics_day', compact('appointments','users', 'files'));
     }
 
     public function show_record(Request $request){
