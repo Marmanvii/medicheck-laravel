@@ -1,6 +1,7 @@
 @extends('layout.master')
 @section('content')
   <h1 align="center">Bloques Disponibles</h1>
+  <h2 align="center">Seleccione un bloque</h2>
   <table class="table table-bordered table-dark table-hover table-sm" style="text-align: center; margin:0px auto;width: 64rem;%;">
     <thead class="thead-light">
       <tr>
