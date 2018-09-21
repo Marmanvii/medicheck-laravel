@@ -25,8 +25,8 @@
     <input name="fecha" type="hidden" value="{{ old( 'fecha', $fecha) }}">
     <input name="bloque" type="hidden" value="{{ old( 'bloque', $bloque) }}">
     <input name="medics_id" type="hidden" value="{{ old( 'medics_id', $medico) }}">
-    <button type="submit" align="center"class="btn">Ingresar</button>
     <a class="btn btn-danger" role="main" href="/appointments">Regresar</a>
+    <button type="submit" align="center"class="btn btn-primary">Ingresar</button>
   </form>
 </div></div>
 @include('layout.errors')
