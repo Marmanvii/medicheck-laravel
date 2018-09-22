@@ -37,7 +37,8 @@ class AppointmentsController extends Controller
       'telefono' => 'required|max:16',
       'observacion' => 'required',
       ]);
-
+      try
+      {
           $appointment = new Appointment;
           $appointment->bloque = request('bloque');
           $appointment->fecha = request('fecha');
@@ -47,7 +48,11 @@ class AppointmentsController extends Controller
           $appointment->observacion = request('observacion');
 
           $appointment->save(); #Se adquieren los atributos según el nombre asignado en la vista y se almacenan en la DB.
-
+        }
+        catch(\Exception $e)
+        {
+          return back()->withErrors(['La cita acaba de ser tomada por alguien más.']); #Se obtienen los errores provenientes de la DB para ser mostrados como un error dentro de la vista.
+        }
         return redirect('/appointments');
     }
     public function destroy($id)
