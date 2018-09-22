@@ -23,7 +23,7 @@ $i = 1;
     </thead>
     <tbody>
       @foreach ($appointments as $appointments)
-        @if(Auth::id()==$appointments->patient_id  && Auth::user()->type=='user')
+        @if(Auth::id()==$appointments->patient_id  && Auth::user()->type=='user' && $appointments->fecha >= now()->toDateString())
           <tr>
             <th scope="row">{{"$i"}}</th>
             <?php
@@ -76,7 +76,7 @@ $i = 1;
               @endif
           </tr>
         @endif
-        @if(Auth::user()->type=='admin' || Auth::user()->type=='secretary')
+        @if((Auth::user()->type=='admin' || Auth::user()->type=='secretary') && $appointments->fecha >= now()->toDateString())
           <tr>
             <th scope="row">{{"$i"}}</th>
             <?php
@@ -131,7 +131,7 @@ $i = 1;
               <td>{{$appointments->observacion}}</td>
           </tr>
         @endif
-        @if(Auth::user()->type=='medic' && Auth::id()==$appointments->medics_id)
+        @if(Auth::user()->type=='medic' && Auth::id()==$appointments->medics_id && $appointments->fecha >= now()->toDateString())
           <tr>
             <th scope="row">{{"$i"}}</th>
             <?php
