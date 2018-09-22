@@ -34,9 +34,15 @@
                         <a class="nav-link" href="/medic_day">Citas del Día</a>
                     </li>
                   @endif
-                  <li class="nav-item">
-                      <a class="nav-link" href="/appointments">Mis Citas</a>
-                  </li>
+                  @if(Auth::user()->type=='user')
+                    <li class="nav-item">
+                        <a class="nav-link" href="/appointments">Mis Citas</a>
+                    </li>
+                  @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="/appointments">Citas</a>
+                    </li>
+                  @endif
                   <li class="nav-item">
                       <a class="nav-link" href="/medics">Médicos</a>
                   </li>
