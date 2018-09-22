@@ -3,7 +3,11 @@
 $i = 1;
 ?>
 @section('content')
-  <h3 class="text-center">Mis Citas</h3>
+  @if(Auth::user()->type=='user')
+    <h3 class="text-center">Mis Citas</h3>
+  @else
+    <h3 class="text-center">Próximas Citas</h3>
+  @endif
   <table class="table table-striped table-bordered table-hover" style="width:80%; margin:0px auto;">
     <thead class="thead-dark">
       <tr>
