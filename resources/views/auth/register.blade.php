@@ -69,14 +69,15 @@
                         @if(Auth::user())
                           @if(Auth::user()->type=='admin')
                             <div class="form-group row">
-                              <label class="col-md-4 col-form-label text-md-right" for="especialidad">especialidad</label>
+                              <label class="col-md-4 col-form-label text-md-right" for="especialidad">Especialidad</label>
                                 <div class="col-md-6">
                                   <select id="especialidad" class="form-control" name="especialidad" required>
-                                    <option value="1">especialidad1</option>
-                                    <option value="2">especialidad2</option>
-                                    <option value="3">especialidad3</option>
-                                    <option value="4">especialidad4</option>
-                                    <option value="5">especialidad5</option>
+                                    <option value="" disabled selected>Seleccione una especialidad</option>
+                                    <option value="Oftalmología">Oftalmología</option>
+                                    <option value="Pediatría">Pediatría</option>
+                                    <option value="Psiquiatría">Psiquiatría</option>
+                                    <option value="Cardiología">Cardiología</option>
+                                    <option value="Neurología">Neurología</option>
                                   </select>
                                 </div>
                             </div>
