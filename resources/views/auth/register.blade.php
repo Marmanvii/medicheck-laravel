@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="rut" class="col-md-4 col-form-label text-md-right">{{ __('R.U.T.') }}</label>
+                            <label for="rut" class="col-md-4 col-form-label text-md-right">{{ __('RUT') }}</label>
 
                             <div class="col-md-6">
                                 <input id="rut" type="text" class="form-control{{ $errors->has('rut') ? ' is-invalid' : '' }}" name="rut" value="{{ old('rut') }}" required autofocus>
