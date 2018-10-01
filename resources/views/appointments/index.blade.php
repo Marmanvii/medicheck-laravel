@@ -59,12 +59,17 @@ $i = 1;
             ?>
             @foreach ($users as $user)
               @if($user->id == $appointments->patient_id)
-                <td>{{$user->rut}}: {{$user->name}} {{$user->last_name}}</td>
+                <td>{{$user->name}} {{$user->last_name}}</td>
               @endif
             @endforeach
         @endif
-        <td>{{$appointments->fecha}}</td>
-            @if ($appointments->bloque == 1)
+        @if ($appointments->fecha >= now()->toDateString())
+          @if(Auth::user()->type!='user')
+            <td>{{$appointments->telefono}}</td>
+             <td>{{$appointments->observacion}}</td>
+          @endif
+          <td>{{$appointments->fecha}}</td>
+              @if ($appointments->bloque == 1)
                 <td>8:30 - 9:00</td>
               @endif
               @if($appointments->bloque == 2)
@@ -103,6 +108,7 @@ $i = 1;
               @if ($appointments->bloque == 13)
                 <td>16:30 - 17:00</td>
               @endif
+        @endif
             </tr>
       @endforeach
     </tbody>

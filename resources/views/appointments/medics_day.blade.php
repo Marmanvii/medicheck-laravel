@@ -11,7 +11,7 @@ $i = 1;
         <th scope="col">Fecha</th>
         <th scope="col">Bloque</th>
         <th scope="col">Paciente</th>
-        <th scope="col">Rut</th>
+        <th scope="col">RUT</th>
         <th scope="col">Acción</th>
 
       </tr>
@@ -74,9 +74,10 @@ $i = 1;
               <?php
                 $j = 0;
               ?>
+              <div class="btn-group">
               @foreach ($files as $file)
                 @if($appointments->id == $file->appointment_id)
-                  <button class="btn btn-dark btn-sm" type="button" disabled>Add File</button>
+                  <button class="btn btn-dark btn-sm" type="button" disabled>📕</button>
                   <?php
                     $j = 1;
                   ?>
@@ -86,19 +87,20 @@ $i = 1;
                 <form action="/medics/filescreate" method="POST">
                   {{csrf_field()}}
                   <input name="appointment_id" type="hidden" value="{{$appointments->id}}">
-                  <button class="btn btn-dark btn-sm" type="submit">Add File</button>
+                  <button class="btn btn-dark btn-sm" type="submit">📖</button>
                 </form>
               @endif
               <form action="/medics/medicationscreate" method="POST">
                 {{csrf_field()}}
                 <input name="appointment_id" type="hidden" value="{{$appointments->id}}">
-                <button class="btn btn-dark btn-sm" type="submit">Add Medicaments</button>
+                <button class="btn btn-dark btn-sm" type="submit">💊</button>
               </form>
               <form action="/medics/record" method="POST">
                 {{csrf_field()}}
                 <input name="patient_id" type="hidden" value="{{$appointments->patient_id}}">
-                <button class="btn btn-dark btn-sm" type="submit">Show Record</button>
+                <button class="btn btn-dark btn-sm" type="submit">👀</button>
               </form>
+            </div>
             </td>
           </tr>
         @endif
