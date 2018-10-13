@@ -23,6 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/addmedic', 'AdminController@create');
 Route::post('/admin', 'AdminController@store');
+Route::get('/admin/select_area', 'AdminController@select_area'); #Falta
+Route::get('/admin/select_medic', 'AdminController@select_medic'); # Falta
+
 
 #CITAS#
 Route::get('/appointments', 'AppointmentsController@index');
@@ -44,3 +47,7 @@ Route::post('/medicfiles', 'FilesController@store');
 #MEDICATIONS#
 Route::any('/medics/medicationscreate', 'MedicationsController@create');
 Route::post('/medicmedications', 'MedicationsController@store');
+
+#SCHEDULES
+Route::any('/schedules/create', 'SchedulesController@create');
+Route::post('/schedules', 'SchedulesController@store');

@@ -98,8 +98,7 @@ class AppointmentsController extends Controller
       return view('appointments.record', compact('appointments','medications','files', 'patient'));
     }
     public function select_area(Request $request){
-      $medics=User::select('especialidad')->where('type', 'medic')->take(100)->get(); #Se seleccionan los medicos pertenecientes al hospital anteriormente seleccionado.
-      return view('appointments.select_area', compact('medics'));
+      return view('appointments.select_area');
     }
     public function select_fecha_medico(Request $request){#Seleccionamos una fecha y medico
       $especialidad = $request->especialidad;

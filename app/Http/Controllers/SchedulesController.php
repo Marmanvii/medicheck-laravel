@@ -3,82 +3,45 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Schedule;
 
 class SchedulesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Request $request)
     {
-        //
+      $medico = $request->medics_id;
+      return view('schedules.create', compact('medico'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
-    }
+      $this->validate(request(),[ #Validaciones para los atributos
+        'medics_id' => 'required',
+        'lunes' => 'required',
+        'martes' => 'required',
+        'miercoles' => 'required',
+        'jueves' => 'required',
+        'viernes' => 'required',
+        'duracion' => 'required',
+      ]);
+      
+      $schedule = new Schedule;
+      $schedule->medics_id = request('medics_id');
+      $schedule->lunes = request('lunes');
+      $schedule->martes = request('martes');
+      $schedule->miercoles = request('miercoles');
+      $schedule->jueves = request('jueves');
+      $schedule->viernes = request('viernes');
+      $schedule->duracion = request('duracion');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+      $schedule->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+      return redirect('/appointments');
     }
 }
