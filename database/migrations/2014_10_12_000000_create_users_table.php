@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
           $table->string('email')->unique();
           $table->string('password');
           $table->string('type'); // Usuario=user; Secretraria=secre; Médico=medic; Administrador=admi;
-          $table->string('especialidad'); // solo los médicos tienen especialidad
+          $table->unsignedInteger('department_id')->nullable()->unsigned();
+          $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade'); // solo los médicos tienen especialidad
           $table->integer('valor'); // valor de la consulta médica
           $table->rememberToken();
           $table->timestamps();
