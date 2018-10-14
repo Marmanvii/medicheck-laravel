@@ -8,7 +8,6 @@ $i = 1;
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Fecha</th>
         <th scope="col">Bloque</th>
         <th scope="col">Paciente</th>
         <th scope="col">RUT</th>
@@ -24,7 +23,6 @@ $i = 1;
             <?php
               $i = $i + 1;
             ?>
-            <td>{{$appointments->fecha}}</td>
             @if ($appointments->bloque == 1)
               <td>8:30 - 9:00</td>
             @endif
