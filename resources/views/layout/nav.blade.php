@@ -29,6 +29,11 @@
                         <a class="nav-link" href="/admin">Panel de Administrador</a>
                     </li>
                   @endif
+                  @if(Auth::user()->type=='secre')
+                    <li class="nav-item">
+                        <a class="nav-link" href="/vender_bono">Vender Bono</a>
+                    </li>
+                  @endif
                   @if(Auth::user()->type=='medic')
                     <li class="nav-item">
                         <a class="nav-link" href="/medic_day">Citas del Día</a>

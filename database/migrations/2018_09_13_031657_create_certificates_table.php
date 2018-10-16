@@ -18,7 +18,6 @@ class CreateCertificatesTable extends Migration
             $table->unsignedInteger('appointment_id');
             $table->foreign('appointment_id')->references('id')->on('appointments')->onDelete('cascade');
             $table->string('medio_pago');
-            $table->date('fecha');
             $table->timestamps();
         });
     }
