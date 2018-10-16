@@ -18,7 +18,21 @@ $i = 1;
       <?php
         $i = $i + 1;
       ?>
+      <!-- FECHAS -->
+
+
+
+
+
+
       <th scope="row">Fechas</th>
+
+
+
+
+
+
+      <!-- FECHAS -->
       <th scope="row">
         <form action="/appointments/bloques_disponibles" method="POST">
           {{csrf_field()}}
@@ -27,8 +41,6 @@ $i = 1;
         </form>
       </th>
     </tr>
-
-
   </tbody>
   </table>
 <main role="main" class="inner cover text-center">
