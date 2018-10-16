@@ -4,7 +4,7 @@
   <h2 align="center">Seleccione el área de salud deseada</h2>
   <div class="card" style="text-align: center;width:80%; margin:0px auto;width: 64rem;">
     <div class="card-body">
-  <form action="/appointments/select_fecha_medico" method="GET" style="text-align: center;width:80%; margin:0px auto;"><!--Luego en el controlador, con request se obtiene este dato-->
+  <form action="/appointments/select_medico" method="GET" style="text-align: center;width:80%; margin:0px auto;"><!--Luego en el controlador, con request se obtiene este dato-->
   {{ csrf_field() }} <!--Sirve para evitar ataques modificando el html desde el navegador.-->
   <div class="form-row">
     <div class="col" align="center">

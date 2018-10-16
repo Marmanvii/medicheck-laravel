@@ -6,7 +6,7 @@
   <h2 align="center">Seleccione su médico y fecha deseada</h2>
   <div class="card" style="text-align: center;width:80%; margin:0px auto;width: 64rem;">
     <div class="card-body">
-  <form action="/appointments/bloques_disponibles" method="GET" style="text-align: center;width:80%; margin:0px auto;"><!--Luego en el controlador, con request se obtiene este dato-->
+  <form action="/appointments/select_fecha" method="GET" style="text-align: center;width:80%; margin:0px auto;"><!--Luego en el controlador, con request se obtiene este dato-->
   {{ csrf_field() }} <!--Sirve para evitar ataques modificando el html desde el navegador.-->
   <div class="form-row">
     <div class="col" align="center">
@@ -18,12 +18,6 @@
               <option value="{{$medic->id}}">{{$medic->name}} {{$medic->last_name}}</option>
           @endforeach
         </select>
-      </div>
-    </div>
-    <div class="col" align="center">
-      <div class="form-group col-md-8">
-        <label for="telefono">Fecha</label>
-        <input type="date" class="form-control" id="fecha" name="fecha" min="<?php echo date('Y-m-d');?>" required>
       </div>
     </div>
   </div>

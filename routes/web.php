@@ -32,7 +32,8 @@ Route::get('/appointments', 'AppointmentsController@index');
 Route::any('/appointments/create', 'AppointmentsController@create');
 Route::post('/appointments', 'AppointmentsController@store');
 Route::get('/appointments/select_area', 'AppointmentsController@select_area');
-Route::get('/appointments/select_fecha_medico', 'AppointmentsController@select_fecha_medico'); #Seleccionar fecha y médico.
+Route::get('/appointments/select_medico', 'AppointmentsController@select_medico');
+Route::get('/appointments/select_fecha', 'AppointmentsController@select_fecha');
 Route::get('/appointments/bloques_disponibles', 'AppointmentsController@bloques_disponibles');
 
 #MÉDICOS#

@@ -103,10 +103,15 @@ class AppointmentsController extends Controller
       $departments = Department::all();
       return view('appointments.select_area', compact('departments'));
     }
-    public function select_fecha_medico(Request $request){#Seleccionamos una fecha y medico
+    public function select_medico(Request $request){#Seleccionamos una fecha y medico
       $department = $request->department;
       $medics=User::select('id','name','last_name')->where('department_id', $department)->take(100)->get(); #Se seleccionan los medicos pertenecientes al hospital anteriormente seleccionado.
-      return view('appointments.select_fecha_medico', compact('medics'));
+      return view('appointments.select_medico', compact('medics'));
+    }
+    public function select_fecha(Request $request){#Seleccionamos una fecha y medico
+      $medic=$request->medics_id;
+      $schedule= Schedule::where('medics_id', $medic)->take(100)->get();
+      return view('appointments.select_fecha', compact('$schedule'));
     }
     public function bloques_disponibles(Request $request){
       $medico = $request->medics_id;
