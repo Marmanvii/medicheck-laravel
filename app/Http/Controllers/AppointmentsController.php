@@ -8,6 +8,7 @@ use App\User;
 use App\Schedule;
 use App\File;
 use App\Medication;
+use App\Department;
 
 class AppointmentsController extends Controller
 {
@@ -82,7 +83,8 @@ class AppointmentsController extends Controller
     public function medics_information(){
         $users = User::all();
         $schedules = Schedule::all();
-        return view('appointments.medics_information', compact('schedules','users'));
+        $department = Department::all();
+        return view('appointments.medics_information', compact('schedules','users', 'department'));
     }
     public function medics_day(){
       $appointments = Appointment::all();
@@ -98,11 +100,12 @@ class AppointmentsController extends Controller
       return view('appointments.record', compact('appointments','medications','files', 'patient'));
     }
     public function select_area(Request $request){
-      return view('appointments.select_area');
+      $departments = Department::all();
+      return view('appointments.select_area', compact('departments'));
     }
     public function select_fecha_medico(Request $request){#Seleccionamos una fecha y medico
-      $especialidad = $request->especialidad;
-      $medics=User::select('id','name','last_name','especialidad')->where('especialidad', $especialidad)->take(100)->get(); #Se seleccionan los medicos pertenecientes al hospital anteriormente seleccionado.
+      $department = $request->department;
+      $medics=User::select('id','name','last_name')->where('department_id', $department)->take(100)->get(); #Se seleccionan los medicos pertenecientes al hospital anteriormente seleccionado.
       return view('appointments.select_fecha_medico', compact('medics'));
     }
     public function bloques_disponibles(Request $request){

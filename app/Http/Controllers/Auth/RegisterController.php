@@ -56,8 +56,8 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'rut' => 'required|string|cl_rut|unique:users',
             'last_name' => 'required|string|max:255',
-            'type' => 'max:20',
-            'especialidad' => 'max:20',
+            'type' => 'required|string|max:255',
+            'department' => 'integer',
             'valor' => 'integer|min:0',
         ]);
     }
@@ -77,7 +77,7 @@ class RegisterController extends Controller
             'rut' => $data['rut'],
             'last_name' => $data['last_name'],
             'type' => $data['type'],
-            'especialidad' => $data['especialidad'],
+            'department_id' => $data['department_id'],
             'valor' => $data['valor'],
         ]);
     }

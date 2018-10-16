@@ -51,3 +51,7 @@ Route::post('/medicmedications', 'MedicationsController@store');
 #SCHEDULES
 Route::any('/schedules/create', 'SchedulesController@create');
 Route::post('/schedules', 'SchedulesController@store');
+
+#DEPARTMENTS
+Route::any('/admin/create_department', 'DepartmentsController@create');
+Route::post('/departments', 'DepartmentsController@store');

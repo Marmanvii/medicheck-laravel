@@ -10,7 +10,11 @@ $i = 1;
         <div class="card text-center">
           <div class="card-body">
             <h4 class="card-title" card text>{{$user->name}} {{$user->last_name}}</h4>
-            <h6 class="card-subtitle" card text>{{$user->especialidad}} - ${{$user->valor}}</h6>
+            @foreach ($department as $department)
+              @if ($department->id == $user->department_id)
+                <h6 class="card-subtitle" card text>{{$department->department}} - ${{$user->valor}}</h6>
+              @endif
+            @endforeach
             @foreach ($schedules as $schedule)
               @if($schedule->medics_id == $user->id)
                 <h6 class="card-text">Duración: {{$schedule->duracion}} Minutos</h6>
