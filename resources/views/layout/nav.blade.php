@@ -31,7 +31,7 @@
                   @endif
                   @if(Auth::user()->type=='secre')
                     <li class="nav-item">
-                        <a class="nav-link" href="/vender_bono">Vender Bono</a>
+                        <a class="nav-link" href="/certificates/vender_bono">Vender Bono</a>
                     </li>
                   @endif
                   @if(Auth::user()->type=='medic')

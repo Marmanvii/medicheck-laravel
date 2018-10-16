@@ -55,3 +55,7 @@ Route::post('/schedules', 'SchedulesController@store');
 #DEPARTMENTS
 Route::any('/admin/create_department', 'DepartmentsController@create');
 Route::post('/departments', 'DepartmentsController@store');
+
+#CERTIFICATES
+Route::get('/certificates/vender_bono', 'CertificatesController@vender_bono');
+Route::get('/certificates/results_search', 'CertificatesController@results_search');
