@@ -33,7 +33,7 @@ class CertificatesController extends Controller
         catch(\Exception $e){
           return back()->withErrors(['La cita acaba de ser tomada por alguien más.']); #Se obtienen los errores provenientes de la DB para ser mostrados como un error dentro de la vista.
         }
-        return redirect('/');
+        return redirect('/appointments');
     }
 
     public function vender_bono(){
