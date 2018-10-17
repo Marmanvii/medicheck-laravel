@@ -83,8 +83,8 @@ class AppointmentsController extends Controller
     public function medics_information(){
         $users = User::all();
         $schedules = Schedule::all();
-        $department = Department::all();
-        return view('appointments.medics_information', compact('schedules','users', 'department'));
+        $departments = Department::all();
+        return view('appointments.medics_information', compact('schedules','users', 'departments'));
     }
     public function medics_day(){
       $appointments = Appointment::all();

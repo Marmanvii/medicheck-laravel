@@ -10,7 +10,7 @@ $i = 1;
         <div class="card text-center">
           <div class="card-body">
             <h4 class="card-title" card text>{{$user->name}} {{$user->last_name}}</h4>
-            @foreach ($department as $department)
+            @foreach ($departments as $department)
               @if ($department->id == $user->department_id)
                 <h6 class="card-subtitle" card text>{{$department->department}} - ${{$user->valor}}</h6>
               @endif
@@ -18,15 +18,13 @@ $i = 1;
             @foreach ($schedules as $schedule)
               @if($schedule->medics_id == $user->id)
                 <h6 class="card-text">Duración: {{$schedule->duracion}} Minutos</h6>
-              @endif
-              <table class="table table-sm" style="width:80%; margin:0px auto;">
-                <thead>
-                  <tr>
-                    <th scope="col">Días de Atención</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @if($schedule->medics_id == $user->id)
+                <table class="table table-sm" style="width:80%; margin:0px auto;">
+                  <thead>
+                    <tr>
+                      <th scope="col">Días de Atención</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                     <tr>
                       <td>
                         @if ($schedule->lunes == '0')
@@ -92,9 +90,9 @@ $i = 1;
                         @endif
                       </td>
                     </tr>
-                  @endif
-                </tbody>
-              </table>
+                  </tbody>
+                </table>
+              @endif
             @endforeach
             <p class="card-text"><small class="text-muted">MediCheck</small></p>
           </div>
