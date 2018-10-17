@@ -57,5 +57,7 @@ Route::any('/admin/create_department', 'DepartmentsController@create');
 Route::post('/departments', 'DepartmentsController@store');
 
 #CERTIFICATES
+Route::any('/certificates/create', 'CertificatesController@create');
+Route::post('/certificates', 'CertificatesController@store');
 Route::get('/certificates/vender_bono', 'CertificatesController@vender_bono');
 Route::get('/certificates/results_search', 'CertificatesController@results_search');
