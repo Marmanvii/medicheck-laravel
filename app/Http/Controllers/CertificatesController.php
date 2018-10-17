@@ -10,21 +10,7 @@ use App\Schedule;
 
 class CertificatesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request){
         $id_cita = $request->appointment_id;
         return view('certificates.create', compact('id_cita'));
