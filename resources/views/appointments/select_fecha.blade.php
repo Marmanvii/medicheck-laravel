@@ -43,7 +43,8 @@
                   <th scope="row">
                     <form action="/appointments/bloques_disponibles" method="POST">
                       {{csrf_field()}}
-                      <input name="fecha_cita" type="hidden" value="{{$fecha}}">
+                      <input name="medics_id" type="hidden" value="{{$medic}}">
+                      <input name="fecha" type="hidden" value="{{$fecha}}">
                       <button class="btn btn-dark btn-sm" type="submit">Seleccionar Fecha</button>
                     </form>
                   </th>
@@ -68,7 +69,8 @@
                   <th scope="row">
                     <form action="/appointments/bloques_disponibles" method="POST">
                       {{csrf_field()}}
-                      <input name="fecha_cita" type="hidden" value="{{$fecha}}">
+                      <input name="medics_id" type="hidden" value="{{$medic}}">
+                      <input name="fecha" type="hidden" value="{{$fecha}}">
                       <button class="btn btn-dark btn-sm" type="submit">Seleccionar Fecha</button>
                     </form>
                   </th>
@@ -93,7 +95,8 @@
                   <th scope="row">
                     <form action="/appointments/bloques_disponibles" method="POST">
                       {{csrf_field()}}
-                      <input name="fecha_cita" type="hidden" value="{{$fecha}}">
+                      <input name="medics_id" type="hidden" value="{{$medic}}">
+                      <input name="fecha" type="hidden" value="{{$fecha}}">
                       <button class="btn btn-dark btn-sm" type="submit">Seleccionar Fecha</button>
                     </form>
                   </th>
@@ -118,7 +121,8 @@
                   <th scope="row">
                     <form action="/appointments/bloques_disponibles" method="POST">
                       {{csrf_field()}}
-                      <input name="fecha_cita" type="hidden" value="{{$fecha}}">
+                      <input name="medics_id" type="hidden" value="{{$medic}}">
+                      <input name="fecha" type="hidden" value="{{$fecha}}">
                       <button class="btn btn-dark btn-sm" type="submit">Seleccionar Fecha</button>
                     </form>
                   </th>
@@ -143,7 +147,8 @@
                   <th scope="row">
                     <form action="/appointments/bloques_disponibles" method="POST">
                       {{csrf_field()}}
-                      <input name="fecha_cita" type="hidden" value="{{$fecha}}">
+                      <input name="medics_id" type="hidden" value="{{$medic}}">
+                      <input name="fecha" type="hidden" value="{{$fecha}}">
                       <button class="btn btn-dark btn-sm" type="submit">Seleccionar Fecha</button>
                     </form>
                   </th>
@@ -160,11 +165,9 @@
         $dia= date("w",strtotime($fecha));
       ?>
     @endfor
-
-
   </tbody>
   </table>
-<main role="main" class="inner cover text-center">
+  <main role="main" class="inner cover text-center">
   <h3></h3>
   <p class="lead">
     <a href="/appointments" class="btn btn-lg btn-secondary">Volver</a>

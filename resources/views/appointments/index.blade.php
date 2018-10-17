@@ -35,7 +35,7 @@ $i = 1;
             ?>
             @foreach ($users as $user)
               @if($user->id == $appointments->medics_id)
-                <td>{{$user->name}}: {{$user->especialidad}}</td>
+                <td>{{$user->name}} {{$user->last_name}}</td>
               @endif
             @endforeach
         @endif
@@ -47,7 +47,7 @@ $i = 1;
             ?>
             @foreach ($users as $user)
               @if($user->id == $appointments->medics_id)
-                <td>{{$user->name}}: {{$user->especialidad}}</td>
+                <td>{{$user->name}} {{$user->last_name}}</td>
               @endif
             @endforeach
         @endif
