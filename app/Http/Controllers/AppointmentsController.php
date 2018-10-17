@@ -110,8 +110,8 @@ class AppointmentsController extends Controller
     }
     public function select_fecha(Request $request){#Seleccionamos una fecha y medico
       $medic=$request->medics_id;
-      $schedule= Schedule::where('medics_id', $medic)->take(100)->get();
-      return view('appointments.select_fecha', compact('$schedule'));
+      $schedules= Schedule::where('medics_id', $medic)->take(100)->get();
+      return view('appointments.select_fecha', compact('schedules', 'medic'));
     }
     public function bloques_disponibles(Request $request){
       $medico = $request->medics_id;
