@@ -8,14 +8,12 @@
   <div class="form-row">
     <div class="col" align="center">
       <div class="form-group col-md-8">
-        <label>Médico</label>
-        <select id="especialidad" class="form-control" name="especialidad" required>
-          <option value="" disabled selected>Seleccione una especialidad</option>
-          <option value="Oftalmología">Oftalmología</option>
-          <option value="Pediatría">Pediatría</option>
-          <option value="Psiquiatría">Psiquiatría</option>
-          <option value="Cardiología">Cardiología</option>
-          <option value="Neurología">Neurología</option>
+        <label for="department">Departamentos</label>
+        <select id="department" class="form-control" name="department" required>
+          <option value="" disabled selected>Seleccione un Departamento</option>
+          @foreach($departments as $department) <!--Función de laravel, se busca por fila de la tabla, adquiriendo un medico y sus datos por ciclo, se obtiene desde el controlador, "as" sirve a modo de alias-->
+              <option value="{{$department->id}}">{{$department->department}}</option>
+          @endforeach
         </select>
       </div>
     </div>
