@@ -22,7 +22,7 @@ class SchedulesController extends Controller
     public function store(Request $request)
     {
       $this->validate(request(),[ #Validaciones para los atributos
-        'medics_id' => 'required',
+        'medics_id' => 'required|unique:schedules',
         'lunes' => 'required',
         'martes' => 'required',
         'miercoles' => 'required',
@@ -30,7 +30,7 @@ class SchedulesController extends Controller
         'viernes' => 'required',
         'duracion' => 'required',
       ]);
-      
+
       $schedule = new Schedule;
       $schedule->medics_id = request('medics_id');
       $schedule->lunes = request('lunes');
