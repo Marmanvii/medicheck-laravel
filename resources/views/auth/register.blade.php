@@ -131,7 +131,7 @@
                           @endif
                         @else
                           <input type="hidden" id="type" name="type" value="user">
-                          <input type="hidden" id="department_id" name="department_id" value="0">
+                          <input type="hidden" id="department_id" name="department_id" value="">
                           <input type="hidden" id="valor" name="valor" value="0">
                         @endif
 

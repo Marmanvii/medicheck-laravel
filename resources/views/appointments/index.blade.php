@@ -63,7 +63,7 @@ $i = 1;
               @endif
             @endforeach
         @endif
-        @if ($appointments->fecha >= now()->toDateString())
+        @if ($appointments->fecha >= now()->toDateString() && Auth::id()==$appointments->patient_id)
           @if(Auth::user()->type!='user')
             <td>{{$appointments->telefono}}</td>
              <td>{{$appointments->observacion}}</td>
