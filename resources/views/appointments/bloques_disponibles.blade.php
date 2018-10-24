@@ -4,7 +4,7 @@
     $dia = date("w",strtotime($fecha)); // obtenemos el día de la semana actual. Lunes = 1, Martes = 2...
   ?>
   <?php
-    $j=1;
+    $j=0;
   ?>
   <h3 class="text-center">Seleccionar Fecha</h3>
   <table class="table table-striped table-bordered table-hover table-sm" style="width:80%; margin:0px auto; text-align:center;">
@@ -45,7 +45,6 @@
           <?php
           $atencion = $schedule->viernes;
           $duracion = $schedule->duracion;
-          $limit_m = strtotime("08:00am");
           ?>
         @endif
       @endforeach
@@ -77,7 +76,7 @@
       @if($atencion == '1' || $atencion == '2')
         @while($final <= $limite)
           <tr>
-            <th>{{$j}}</th>
+            <th>{{$j+'1'}}</th>
             <th>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</th>
             <th>
               <?php $ok = 0; #0=no hay, 1=hay ?>
@@ -159,6 +158,10 @@
             $final = $inicio + ($duracion*60);
           ?>
         @endwhile
+        <?php
+        $inicio = $inicio + 3600;
+        $final = $final + 3600;
+        ?>
           <tr>
             <th>---</th>
             <th>---</th>

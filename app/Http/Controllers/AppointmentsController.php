@@ -17,8 +17,9 @@ class AppointmentsController extends Controller
     }
     public function index()    {
         $appointments = Appointment::all();
+        $schedules = Schedule::all();
         $users = User::all();
-        return view('appointments.index', compact('appointments','users'));
+        return view('appointments.index', compact('appointments','users','schedules'));
     }
     public function show(Appointment $appointment){
       return view('appointments.show', compact('appointment'));
