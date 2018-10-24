@@ -80,13 +80,123 @@
             <th>{{$j}}</th>
             <th>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</th>
             <th>
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="bloque" type="hidden" value="{{$j}}">
-                <button class="btn btn-dark btn-sm" type="submit">Seleccionar Hora</button>
-              </form>
+              <?php $ok = 0; #0=no hay, 1=hay ?>
+              @foreach ($appointments as $appointment)
+                @if ($appointment->medics_id == $medico)
+                  @if($appointment->fecha == $fecha)
+                    @if($appointment->bloque == $j)
+                      <?php $ok = 1 ?>
+                    @endif
+                  @endif
+                @endif
+              @endforeach
+              @if ($ok == 1)
+                <form action="/appointments" method="POST"> <!-- Falta ruta para lista espera -->
+                  {{csrf_field()}}
+                  <input name="medics_id" type="hidden" value="{{$medico}}">
+                  <input name="fecha" type="hidden" value="{{$fecha}}">
+                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <button class="btn btn-dark btn-sm" type="submit">Lista de Espera</button>
+                </form>
+              @endif
+              @if ($ok == 0)
+                <form action="/appointments/create" method="POST">
+                  {{csrf_field()}}
+                  <input name="medics_id" type="hidden" value="{{$medico}}">
+                  <input name="fecha" type="hidden" value="{{$fecha}}">
+                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <button class="btn btn-dark btn-sm" type="submit">Seleccionar Hora</button>
+                </form>
+              @endif
+            </th>
+          </tr>
+          <?php
+            $j=$j+1;
+            $inicio = $final;
+            $final = $inicio + ($duracion*60);
+          ?>
+        @endwhile
+      @endif
+      @if($atencion == '3')
+        @while($final <= $limite_m)
+          <tr>
+            <th>{{$j}}</th>
+            <th>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</th>
+            <th>
+              <?php $ok = 0; #0=no hay, 1=hay ?>
+              @foreach ($appointments as $appointment)
+                @if ($appointment->medics_id == $medico)
+                  @if($appointment->fecha == $fecha)
+                    @if($appointment->bloque == $j)
+                      <?php $ok = 1 ?>
+                    @endif
+                  @endif
+                @endif
+              @endforeach
+              @if ($ok == 1)
+                <form action="/appointments" method="POST"> <!-- Falta ruta para lista espera -->
+                  {{csrf_field()}}
+                  <input name="medics_id" type="hidden" value="{{$medico}}">
+                  <input name="fecha" type="hidden" value="{{$fecha}}">
+                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <button class="btn btn-dark btn-sm" type="submit">Lista de Espera</button>
+                </form>
+              @endif
+              @if ($ok == 0)
+                <form action="/appointments/create" method="POST">
+                  {{csrf_field()}}
+                  <input name="medics_id" type="hidden" value="{{$medico}}">
+                  <input name="fecha" type="hidden" value="{{$fecha}}">
+                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <button class="btn btn-dark btn-sm" type="submit">Seleccionar Hora</button>
+                </form>
+              @endif
+            </th>
+          </tr>
+          <?php
+            $j=$j+1;
+            $inicio = $final;
+            $final = $inicio + ($duracion*60);
+          ?>
+        @endwhile
+          <tr>
+            <th>---</th>
+            <th>---</th>
+            <th>---</th>
+          </tr>
+        @while($final <= $limite_t)
+          <tr>
+            <th>{{$j}}</th>
+            <th>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</th>
+            <th>
+              <?php $ok = 0; #0=no hay, 1=hay ?>
+              @foreach ($appointments as $appointment)
+                @if ($appointment->medics_id == $medico)
+                  @if($appointment->fecha == $fecha)
+                    @if($appointment->bloque == $j)
+                      <?php $ok = 1 ?>
+                    @endif
+                  @endif
+                @endif
+              @endforeach
+              @if ($ok == 1)
+                <form action="/appointments" method="POST"> <!-- Falta ruta para lista espera -->
+                  {{csrf_field()}}
+                  <input name="medics_id" type="hidden" value="{{$medico}}">
+                  <input name="fecha" type="hidden" value="{{$fecha}}">
+                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <button class="btn btn-dark btn-sm" type="submit">Lista de Espera</button>
+                </form>
+              @endif
+              @if ($ok == 0)
+                <form action="/appointments/create" method="POST">
+                  {{csrf_field()}}
+                  <input name="medics_id" type="hidden" value="{{$medico}}">
+                  <input name="fecha" type="hidden" value="{{$fecha}}">
+                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <button class="btn btn-dark btn-sm" type="submit">Seleccionar Hora</button>
+                </form>
+              @endif
             </th>
           </tr>
           <?php
