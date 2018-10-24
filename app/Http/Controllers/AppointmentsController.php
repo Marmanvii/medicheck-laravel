@@ -117,19 +117,7 @@ class AppointmentsController extends Controller
       $medico = $request->medics_id;
       $fecha = $request->fecha;
       $appointments = Appointment::all();
-      $bloque_1 = Appointment::where('bloque','1')->where('fecha',$fecha)->where('medics_id',$medico)->count();
-      $bloque_2 = Appointment::where('bloque','2')->where('fecha',$fecha)->where('medics_id',$medico)->count();
-      $bloque_3 = Appointment::where('bloque','3')->where('fecha',$fecha)->where('medics_id',$medico)->count();
-      $bloque_4 = Appointment::where('bloque','4')->where('fecha',$fecha)->where('medics_id',$medico)->count();
-      $bloque_5 = Appointment::where('bloque','5')->where('fecha',$fecha)->where('medics_id',$medico)->count();
-      $bloque_6 = Appointment::where('bloque','6')->where('fecha',$fecha)->where('medics_id',$medico)->count();
-      $bloque_7 = Appointment::where('bloque','7')->where('fecha',$fecha)->where('medics_id',$medico)->count();
-      $bloque_8 = Appointment::where('bloque','8')->where('fecha',$fecha)->where('medics_id',$medico)->count();
-      $bloque_9 = Appointment::where('bloque','9')->where('fecha',$fecha)->where('medics_id',$medico)->count();
-      $bloque_10 = Appointment::where('bloque','10')->where('fecha',$fecha)->where('medics_id',$medico)->count();
-      $bloque_11 = Appointment::where('bloque','11')->where('fecha',$fecha)->where('medics_id',$medico)->count();
-      $bloque_12 = Appointment::where('bloque','12')->where('fecha',$fecha)->where('medics_id',$medico)->count();
-      $bloque_13 = Appointment::where('bloque','13')->where('fecha',$fecha)->where('medics_id',$medico)->count();
-      return view('appointments.bloques_disponibles', compact('medico','fecha','bloque_1','bloque_2','bloque_3','bloque_4','bloque_5','bloque_6','bloque_7','bloque_8','bloque_9','bloque_10','bloque_11','bloque_12','bloque_13'));
+      $schedules = Schedule::where('medics_id', $medico)->take(100)->get();
+      return view('appointments.bloques_disponibles', compact('medico','fecha','appointments','schedules'));
     }
 }
