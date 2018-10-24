@@ -45,14 +45,16 @@
           <?php
           $atencion = $schedule->viernes;
           $duracion = $schedule->duracion;
+          $limit_m = strtotime("08:00am");
           ?>
         @endif
       @endforeach
-      @if($atencion == '1' || $atencion == '3')
+      @if($atencion == '1')
         <?php
           $inicio = strtotime("08:00am");
           $final = strtotime("08:00am");
           $final = $inicio + ($duracion*60);
+          $limite = strtotime("01:00pm");
         ?>
       @endif
       @if($atencion == '2')
@@ -60,10 +62,41 @@
           $inicio = strtotime("02:00pm");
           $final = strtotime("02:00pm");
           $final = $inicio + ($duracion*60);
+          $limite = strtotime("07:00pm");
         ?>
       @endif
-
+      @if($atencion == '3')
+        <?php
+          $inicio = strtotime("08:00am");
+          $final = strtotime("08:00am");
+          $final = $inicio + ($duracion*60);
+          $limite_m = strtotime("01:00pm");
+          $limite_t = strtotime("07:00pm");
+        ?>
+      @endif
+      @if($atencion == '1' || $atencion == '2')
+        @while($final <= $limite)
+          <tr>
+            <th>{{$j}}</th>
+            <th>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</th>
+            <th>
+              <form action="/appointments/create" method="POST">
+                {{csrf_field()}}
+                <input name="medics_id" type="hidden" value="{{$medico}}">
+                <input name="fecha" type="hidden" value="{{$fecha}}">
+                <input name="bloque" type="hidden" value="{{$j}}">
+                <button class="btn btn-dark btn-sm" type="submit">Seleccionar Hora</button>
+              </form>
+            </th>
+          </tr>
+          <?php
+            $j=$j+1;
+            $inicio = $final;
+            $final = $inicio + ($duracion*60);
+          ?>
+        @endwhile
+      @endif
     </tbody>
-<h1>hola {{date("H:i", $inicio)}}{{date("H:i", $final)}}</h1>
+
 
 @endsection
