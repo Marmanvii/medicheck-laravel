@@ -12,10 +12,15 @@ $i = 1;
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        @if(Auth::user()->type!='medic')
+        @if(Auth::user()->type=='user')
           <th scope="col">Médico</th>
-        @else
+        @endif
+        @if(Auth::user()->type=='medic')
           <th scope="col">Paciente</th>
+        @endif
+        @if(Auth::user()->type=='admin' || Auth::user()->type=='secre')
+          <th scope="col">Paciente</th>
+          <th scope="col">Médico</th>
         @endif
         @if(Auth::user()->type!='user')
           <th scope="col">Teléfono</th>
@@ -39,12 +44,17 @@ $i = 1;
               @endif
             @endforeach
         @endif
-        @if((Auth::user()->type=='admin' || Auth::user()->type=='secretary') && $appointments->fecha >= now()->toDateString())
+        @if((Auth::user()->type=='admin' || Auth::user()->type=='secre') && $appointments->fecha >= now()->toDateString())
           <tr>
             <th scope="row">{{"$i"}}</th>
             <?php
               $i = $i + 1;
             ?>
+            @foreach ($users as $user)
+              @if($user->id == $appointments->patient_id)
+                <td>{{$user->name}} {{$user->last_name}}</td>
+              @endif
+            @endforeach
             @foreach ($users as $user)
               @if($user->id == $appointments->medics_id)
                 <td>{{$user->name}} {{$user->last_name}}</td>
@@ -63,8 +73,14 @@ $i = 1;
               @endif
             @endforeach
         @endif
-        @if ($appointments->fecha >= now()->toDateString() && Auth::id()==$appointments->patient_id)
-          @if(Auth::user()->type!='user')
+        @if ($appointments->fecha >= now()->toDateString())
+          @if(Auth::user()->type=='admin' || Auth::user()->type=='secre')
+            <td>{{$appointments->telefono}}</td>
+            <td>{{$appointments->observacion}}</td>
+            <td>{{$appointments->fecha}}</td>
+            <td>{{$appointments->bloque}}</td>
+          @endif
+          @if(Auth::user()->type=='medic' && Auth::id()==$appointments->medics_id)
             <td>{{$appointments->telefono}}</td>
             <td>{{$appointments->observacion}}</td>
           @endif
@@ -139,6 +155,7 @@ $i = 1;
               ?>
             @endif
           @endforeach
+
         @endif
             </tr>
       @endforeach
