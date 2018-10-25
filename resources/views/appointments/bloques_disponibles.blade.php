@@ -1,474 +1,215 @@
 @extends('layout.master')
 @section('content')
-  <h1 align="center">Bloques Disponibles</h1>
-  <h2 align="center">Seleccione un bloque</h2>
-  <table class="table table-bordered table-dark table-hover table-sm" style="text-align: center; margin:0px auto;width: 64rem;%;">
-    <thead class="thead-light">
+  <?php
+    $dia = date("w",strtotime($fecha)); // obtenemos el día de la semana actual. Lunes = 1, Martes = 2...
+  ?>
+  <?php
+    $j=0;
+  ?>
+  <h3 class="text-center">Seleccionar Fecha</h3>
+  <table class="table table-striped table-bordered table-hover table-sm" style="width:80%; margin:0px auto; text-align:center;">
+    <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Hora</th>
-        <th scope="col">Disponibilidad</th>
+        <th scope="col">Horario</th>
         <th scope="col">Acción</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th>1</th>
-        <td>8:30 - 9:00</td>
-        @if($bloque_1==0)
-          <td>
-            Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value="1">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit">Solicitar Hora</button>
-              </form>
-            </div>
-          </td>
-        @else
-          <td>
-            No Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/esperas/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value=1>
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit" disabled>Ocupado</button>
-              </form>
-            </div>
-          </td>
+      @foreach ($schedules as $schedule)
+        @if($dia == '1')
+          <?php
+          $atencion = $schedule->lunes;
+          $duracion = $schedule->duracion;
+          ?>
         @endif
-      </tr>
-      <tr>
-        <th>2</th>
-        <td>9:00 - 9:30</td>
-        @if($bloque_2==0)
-          <td>
-            Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value="2">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit">Solicitar Hora</button>
-              </form>
-            </div>
-          </td>
-        @else
-          <td>
-            No Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/esperas/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value=2>
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit" disabled>Ocupado</button>
-              </form>
-            </div>
-          </td>
+        @if($dia == '2')
+          <?php
+          $atencion = $schedule->martes;
+          $duracion = $schedule->duracion;
+          ?>
         @endif
-      </tr>
-      <tr>
-        <th>3</th>
-        <td>9:30 - 10:30</td>
-        @if($bloque_3==0)
-          <td>
-            Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value="3">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit">Solicitar Hora</button>
-              </form>
-            </div>
-          </td>
-        @else
-          <td>
-            No Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/esperas/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value=3>
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit" disabled>Ocupado</button>
-              </form>
-            </div>
-          </td>
+        @if($dia == '3')
+          <?php
+          $atencion = $schedule->miercoles;
+          $duracion = $schedule->duracion;
+          ?>
         @endif
-      </tr>
-      <tr>
-        <th>4</th>
-        <td>10:00 - 10:30</td>
-        @if($bloque_4==0)
-          <td>
-            Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value="4">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit">Solicitar Hora</button>
-              </form>
-            </div>
-          </td>
-        @else
-          <td>
-            No Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/esperas/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value=4>
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit" disabled>Ocupado</button>
-              </form>
-            </div>
-          </td>
+        @if($dia == '4')
+          <?php
+          $atencion = $schedule->jueves;
+          $duracion = $schedule->duracion;
+          ?>
         @endif
-      </tr>
-      <tr>
-        <th>5</th>
-        <td>10:30 - 11:00</td>
-        @if($bloque_5==0)
-          <td>
-            Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value="5">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit">Solicitar Hora</button>
-              </form>
-            </div>
-          </td>
-        @else
-          <td>
-            No Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/esperas/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value=5>
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit" disabled>Ocupado</button>
-              </form>
-            </div>
-          </td>
+        @if($dia == '5')
+          <?php
+          $atencion = $schedule->viernes;
+          $duracion = $schedule->duracion;
+          ?>
         @endif
-      </tr>
-      <tr>
-        <th>6</th>
-        <td>11:00 - 11:30</td>
-        @if($bloque_6==0)
-          <td>
-            Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value="6">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit">Solicitar Hora</button>
-              </form>
-            </div>
-          </td>
-        @else
-          <td>
-            No Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/esperas/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value=6>
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit" disabled>Ocupado</button>
-              </form>
-            </div>
-          </td>
-        @endif
-      </tr>
-      <tr>
-        <th>7</th>
-        <td>11:30 - 12:00</td>
-        @if($bloque_7==0)
-          <td>
-            Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value="7">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit">Solicitar Hora</button>
-              </form>
-            </div>
-          </td>
-        @else
-          <td>
-            No Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/esperas/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value=7>
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit" disabled>Ocupado</button>
-              </form>
-            </div>
-          </td>
-        @endif
-      </tr>
-      <tr>
-        <th>8</th>
-        <td>12:00 - 12:30</td>
-        @if($bloque_8==0)
-          <td>
-            Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value="8">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit">Solicitar Hora</button>
-              </form>
-            </div>
-          </td>
-        @else
-          <td>
-            No Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/esperas/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value=8>
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit" disabled>Ocupado</button>
-              </form>
-            </div>
-          </td>
-        @endif
-      </tr>
-      <tr>
-        <th>9</th>
-        <td>12:30 - 13:00</td>
-        @if($bloque_9==0)
-          <td>
-            Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value="9">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit">Solicitar Hora</button>
-              </form>
-            </div>
-          </td>
-        @else
-          <td>
-            No Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/esperas/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value=9>
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit" disabled>Ocupado</button>
-              </form>
-            </div>
-          </td>
-        @endif
-      </tr>
-      <tr>
-        <th>10</th>
-        <td>15:00 - 15:30</td>
-        @if($bloque_10==0)
-          <td>
-            Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value="10">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit">Solicitar Hora</button>
-              </form>
-            </div>
-          </td>
-        @else
-          <td>
-            No Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/esperas/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value=10>
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit" disabled>Ocupado</button>
-              </form>
-            </div>
-          </td>
-        @endif
-      </tr>
-      <tr>
-        <th>11</th>
-        <td>15:30 - 16:00</td>
-        @if($bloque_11==0)
-          <td>
-            Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value="11">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit">Solicitar Hora</button>
-              </form>
-            </div>
-          </td>
-        @else
-          <td>
-            No Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/esperas/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value=11>
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit" disabled>Ocupado</button>
-              </form>
-            </div>
-          </td>
-        @endif
-      </tr>
-      <tr>
-        <th>12</th>
-        <td>16:00 - 16:30</td>
-        @if($bloque_12==0)
-          <td>
-            Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value="12">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit">Solicitar Hora</button>
-              </form>
-            </div>
-          </td>
-        @else
-          <td>
-            No Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/esperas/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value=12>
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit" disabled>Ocupado</button>
-              </form>
-            </div>
-          </td>
-        @endif
-      </tr>
-      <tr>
-        <th>13</th>
-        <td>16:30 - 17:00</td>
-        @if($bloque_13==0)
-          <td>
-            Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/appointments/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value="13">
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit">Solicitar Hora</button>
-              </form>
-            </div>
-          </td>
-        @else
-          <td>
-            No Disponible
-          </td>
-          <td>
-            <div class="floatright">
-              <form action="/esperas/create" method="POST">
-                {{csrf_field()}}
-                <input name="bloque" type="hidden" value=13>
-                <input name="fecha" type="hidden" value="{{$fecha}}">
-                <input name="medics_id" type="hidden" value="{{$medico}}">
-                <button class="btn btn-outline-light" type="submit" disabled>Ocupado</button>
-              </form>
-            </div>
-          </td>
-        @endif
-      </tr>
+      @endforeach
+      @if($atencion == '1')
+        <?php
+          $inicio = strtotime("08:00am");
+          $final = strtotime("08:00am");
+          $final = $inicio + ($duracion*60);
+          $limite = strtotime("01:00pm");
+        ?>
+      @endif
+      @if($atencion == '2')
+        <?php
+          $inicio = strtotime("02:00pm");
+          $final = strtotime("02:00pm");
+          $final = $inicio + ($duracion*60);
+          $limite = strtotime("07:00pm");
+        ?>
+      @endif
+      @if($atencion == '3')
+        <?php
+          $inicio = strtotime("08:00am");
+          $final = strtotime("08:00am");
+          $final = $inicio + ($duracion*60);
+          $limite_m = strtotime("01:00pm");
+          $limite_t = strtotime("07:00pm");
+        ?>
+      @endif
+      @if($atencion == '1' || $atencion == '2')
+        @while($final <= $limite)
+          <tr>
+            <th>{{$j+'1'}}</th>
+            <th>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</th>
+            <th>
+              <?php $ok = 0; #0=no hay, 1=hay ?>
+              @foreach ($appointments as $appointment)
+                @if ($appointment->medics_id == $medico)
+                  @if($appointment->fecha == $fecha)
+                    @if($appointment->bloque == $j)
+                      <?php $ok = 1 ?>
+                    @endif
+                  @endif
+                @endif
+              @endforeach
+              @if ($ok == 1)
+                <form action="/appointments" method="POST"> <!-- Falta ruta para lista espera -->
+                  {{csrf_field()}}
+                  <input name="medics_id" type="hidden" value="{{$medico}}">
+                  <input name="fecha" type="hidden" value="{{$fecha}}">
+                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <button class="btn btn-dark btn-sm" type="submit">Lista de Espera</button>
+                </form>
+              @endif
+              @if ($ok == 0)
+                <form action="/appointments/create" method="POST">
+                  {{csrf_field()}}
+                  <input name="medics_id" type="hidden" value="{{$medico}}">
+                  <input name="fecha" type="hidden" value="{{$fecha}}">
+                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <button class="btn btn-dark btn-sm" type="submit">Seleccionar Hora</button>
+                </form>
+              @endif
+            </th>
+          </tr>
+          <?php
+            $j=$j+1;
+            $inicio = $final;
+            $final = $inicio + ($duracion*60);
+          ?>
+        @endwhile
+      @endif
+      @if($atencion == '3')
+        @while($final <= $limite_m)
+          <tr>
+            <th>{{$j}}</th>
+            <th>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</th>
+            <th>
+              <?php $ok = 0; #0=no hay, 1=hay ?>
+              @foreach ($appointments as $appointment)
+                @if ($appointment->medics_id == $medico)
+                  @if($appointment->fecha == $fecha)
+                    @if($appointment->bloque == $j)
+                      <?php $ok = 1 ?>
+                    @endif
+                  @endif
+                @endif
+              @endforeach
+              @if ($ok == 1)
+                <form action="/appointments" method="POST"> <!-- Falta ruta para lista espera -->
+                  {{csrf_field()}}
+                  <input name="medics_id" type="hidden" value="{{$medico}}">
+                  <input name="fecha" type="hidden" value="{{$fecha}}">
+                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <button class="btn btn-dark btn-sm" type="submit">Lista de Espera</button>
+                </form>
+              @endif
+              @if ($ok == 0)
+                <form action="/appointments/create" method="POST">
+                  {{csrf_field()}}
+                  <input name="medics_id" type="hidden" value="{{$medico}}">
+                  <input name="fecha" type="hidden" value="{{$fecha}}">
+                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <button class="btn btn-dark btn-sm" type="submit">Seleccionar Hora</button>
+                </form>
+              @endif
+            </th>
+          </tr>
+          <?php
+            $j=$j+1;
+            $inicio = $final;
+            $final = $inicio + ($duracion*60);
+          ?>
+        @endwhile
+        <?php
+        $inicio = $inicio + 3600;
+        $final = $final + 3600;
+        ?>
+          <tr>
+            <th>---</th>
+            <th>---</th>
+            <th>---</th>
+          </tr>
+        @while($final <= $limite_t)
+          <tr>
+            <th>{{$j}}</th>
+            <th>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</th>
+            <th>
+              <?php $ok = 0; #0=no hay, 1=hay ?>
+              @foreach ($appointments as $appointment)
+                @if ($appointment->medics_id == $medico)
+                  @if($appointment->fecha == $fecha)
+                    @if($appointment->bloque == $j)
+                      <?php $ok = 1 ?>
+                    @endif
+                  @endif
+                @endif
+              @endforeach
+              @if ($ok == 1)
+                <form action="/appointments" method="POST"> <!-- Falta ruta para lista espera -->
+                  {{csrf_field()}}
+                  <input name="medics_id" type="hidden" value="{{$medico}}">
+                  <input name="fecha" type="hidden" value="{{$fecha}}">
+                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <button class="btn btn-dark btn-sm" type="submit">Lista de Espera</button>
+                </form>
+              @endif
+              @if ($ok == 0)
+                <form action="/appointments/create" method="POST">
+                  {{csrf_field()}}
+                  <input name="medics_id" type="hidden" value="{{$medico}}">
+                  <input name="fecha" type="hidden" value="{{$fecha}}">
+                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <button class="btn btn-dark btn-sm" type="submit">Seleccionar Hora</button>
+                </form>
+              @endif
+            </th>
+          </tr>
+          <?php
+            $j=$j+1;
+            $inicio = $final;
+            $final = $inicio + ($duracion*60);
+          ?>
+        @endwhile
+      @endif
     </tbody>
-  </table>
-  </main>
+
 
 @endsection
