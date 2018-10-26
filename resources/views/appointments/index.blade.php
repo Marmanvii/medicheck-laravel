@@ -77,8 +77,6 @@ $i = 1;
           @if(Auth::user()->type=='admin' || Auth::user()->type=='secre')
             <td>{{$appointments->telefono}}</td>
             <td>{{$appointments->observacion}}</td>
-            <td>{{$appointments->fecha}}</td>
-            <td>{{$appointments->bloque}}</td>
           @endif
           @if(Auth::user()->type=='medic' && Auth::id()==$appointments->medics_id)
             <td>{{$appointments->telefono}}</td>
