@@ -62,3 +62,8 @@ Route::any('/certificates/create', 'CertificatesController@create');
 Route::post('/certificates', 'CertificatesController@store');
 Route::get('/certificates/vender_bono', 'CertificatesController@vender_bono');
 Route::get('/certificates/results_search', 'CertificatesController@results_search');
+
+#WAITING_LISTS
+
+Route::any('/waiting_list/create', 'Waiting_listsController@create');
+Route::post('/waiting_list', 'Waiting_listsController@store');

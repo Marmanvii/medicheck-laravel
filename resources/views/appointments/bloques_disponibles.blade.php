@@ -84,17 +84,18 @@
                 @if ($appointment->medics_id == $medico)
                   @if($appointment->fecha == $fecha)
                     @if($appointment->bloque == $j)
-                      <?php $ok = 1 ?>
+                      <?php
+                      $ok = 1;
+                      $cita = $appointment->id;
+                      ?>
                     @endif
                   @endif
                 @endif
               @endforeach
               @if ($ok == 1)
-                <form action="/appointments" method="POST"> <!-- Falta ruta para lista espera -->
+                <form action="/waiting_list/create" method="POST">
                   {{csrf_field()}}
-                  <input name="medics_id" type="hidden" value="{{$medico}}">
-                  <input name="fecha" type="hidden" value="{{$fecha}}">
-                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <input name="cita_id" type="hidden" value="{{$cita}}">
                   <button class="btn btn-dark btn-sm" type="submit">Lista de Espera</button>
                 </form>
               @endif
@@ -127,17 +128,18 @@
                 @if ($appointment->medics_id == $medico)
                   @if($appointment->fecha == $fecha)
                     @if($appointment->bloque == $j)
-                      <?php $ok = 1 ?>
+                      <?php
+                      $ok = 1;
+                      $cita = $appointment->id;
+                      ?>
                     @endif
                   @endif
                 @endif
               @endforeach
               @if ($ok == 1)
-                <form action="/appointments" method="POST"> <!-- Falta ruta para lista espera -->
+                <form action="/waiting_list/create" method="POST">
                   {{csrf_field()}}
-                  <input name="medics_id" type="hidden" value="{{$medico}}">
-                  <input name="fecha" type="hidden" value="{{$fecha}}">
-                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <input name="cita_id" type="hidden" value="{{$cita}}">
                   <button class="btn btn-dark btn-sm" type="submit">Lista de Espera</button>
                 </form>
               @endif
@@ -177,17 +179,18 @@
                 @if ($appointment->medics_id == $medico)
                   @if($appointment->fecha == $fecha)
                     @if($appointment->bloque == $j)
-                      <?php $ok = 1 ?>
+                      <?php
+                      $ok = 1;
+                      $cita = $appointment->id;
+                      ?>
                     @endif
                   @endif
                 @endif
               @endforeach
               @if ($ok == 1)
-                <form action="/appointments" method="POST"> <!-- Falta ruta para lista espera -->
+                <form action="/waiting_list/create" method="POST">
                   {{csrf_field()}}
-                  <input name="medics_id" type="hidden" value="{{$medico}}">
-                  <input name="fecha" type="hidden" value="{{$fecha}}">
-                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <input name="cita_id" type="hidden" value="{{$cita}}">
                   <button class="btn btn-dark btn-sm" type="submit">Lista de Espera</button>
                 </form>
               @endif
@@ -210,6 +213,4 @@
         @endwhile
       @endif
     </tbody>
-
-
 @endsection
