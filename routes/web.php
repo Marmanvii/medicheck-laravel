@@ -35,8 +35,7 @@ Route::get('/appointments/select_area', 'AppointmentsController@select_area');
 Route::get('/appointments/select_medico', 'AppointmentsController@select_medico');
 Route::get('/appointments/select_fecha', 'AppointmentsController@select_fecha');
 Route::any('/appointments/bloques_disponibles', 'AppointmentsController@bloques_disponibles');
-
-Route::post('appointment/update{id}', 'appointmentsController@update');
+Route::post('appointment/update{id}', 'appointmentsController@wait_list_to_appointment');
 
 
 #MÉDICOS#

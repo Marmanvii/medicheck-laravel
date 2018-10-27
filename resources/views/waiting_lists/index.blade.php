@@ -59,6 +59,7 @@ $dia= date("w",strtotime($fecha));
             <th scope="row">
               <form method="POST" action="{{ url('appointment/update/').$waiting_list->appointment_id}}">
                 {{csrf_field()}}
+                <input name="waiting_list_id" type="hidden" value="{{$waiting_list->id}}">
                 <input name="patient_id" type="hidden" value="{{$waiting_list->patient_id}}">
                 <input name="telefono" type="hidden" value="{{$waiting_list->telefono}}">
                 <input name="observacion" type="hidden" value="{{$waiting_list->observacion}}">
@@ -68,7 +69,6 @@ $dia= date("w",strtotime($fecha));
           @endif
         </tr>
         @endforeach
-
     </tbody>
   </table>
   <main role="main" class="inner cover text-center">

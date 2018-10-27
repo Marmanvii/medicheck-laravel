@@ -9,6 +9,7 @@ use App\Schedule;
 use App\File;
 use App\Medication;
 use App\Department;
+use App\Waiting_List;
 
 class AppointmentsController extends Controller
 {
@@ -67,12 +68,16 @@ class AppointmentsController extends Controller
       $appointments = Appointment::all();
       return view('appointments.edit', compact('appointments'));
     }
-    public function update(Request $request, $id){
+    public function wait_list_to_appointment(Request $request, $id){
       $appointments = Appointment::find($id);
       $appointments->patient_id = request('patient_id');
       $appointments->observacion = request('observacion');
       $appointments->telefono = request('telefono');
       $appointments->save();
+
+      $waiting_list = Waiting_List::find(request('waiting_list_id'));
+      $waiting_list->delete();
+
       return redirect('/appointments');
     }
     public function medics_information(){
