@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Waiting_List;
+use App\Appointment;
+use App\User;
 
 class Waiting_listsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $cita_id = $request->appointment_id;
+        $inicio = $request->hora_inicio;
+        $final = $request->hora_final;
+        $waiting_list = Waiting_List::All();
+        $appointments = Appointment::All();
+        $users = User::All();
+        return view('waiting_lists.index', compact('cita_id', 'waiting_list', 'appointments', 'inicio', 'final', 'users'));
     }
 
     public function create(Request $request)

@@ -41,6 +41,9 @@ Route::get('/medics', 'AppointmentsController@medics_information');
 Route::get('/medic_day', 'AppointmentsController@medics_day');
 Route::any('/medics/record', 'AppointmentsController@show_record'); # muestra Files y Medications
 
+#SECRETARIA
+Route::get('/appointments/next_day', 'AppointmentsController@next_day');
+
 #FILES#
 Route::any('/medics/filescreate', 'FilesController@create');
 Route::post('/medicfiles', 'FilesController@store');
@@ -64,6 +67,6 @@ Route::get('/certificates/vender_bono', 'CertificatesController@vender_bono');
 Route::get('/certificates/results_search', 'CertificatesController@results_search');
 
 #WAITING_LISTS
-
 Route::any('/waiting_list/create', 'Waiting_listsController@create');
 Route::post('/waiting_list', 'Waiting_listsController@store');
+Route::any('/waiting_list_show', 'Waiting_listsController@index');

@@ -121,4 +121,12 @@ class AppointmentsController extends Controller
       $schedules = Schedule::where('medics_id', $medico)->take(100)->get();
       return view('appointments.bloques_disponibles', compact('medico','fecha','appointments','schedules'));
     }
+    public function next_day(){
+      $appointments = Appointment::all();
+      $users = User::all();
+      $schedules = Schedule::all();
+      return view('appointments.next_day', compact('appointments', 'users', 'schedules'));
+    }
+
+
 }
