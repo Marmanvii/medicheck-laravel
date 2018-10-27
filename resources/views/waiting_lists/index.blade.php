@@ -57,10 +57,9 @@ $dia= date("w",strtotime($fecha));
             <th scope="row">{{$waiting_list->telefono}}</th>
             <th scope="row">{{$waiting_list->observacion}}</th>
             <th scope="row">
-              <form action="" method="POST"> <!-- Falta agregar que el botón edite la lista de espera -->
+              <form method="POST" action="{{ url('appointment/update/').$waiting_list->appointment_id}}">
                 {{csrf_field()}}
-                <input name="appointment_id" type="hidden" value="{{$waiting_list->appointment_id}}">
-                <input name="patient_id" type="hidden" value="{{$user->id}}">
+                <input name="patient_id" type="hidden" value="{{$waiting_list->patient_id}}">
                 <input name="telefono" type="hidden" value="{{$waiting_list->telefono}}">
                 <input name="observacion" type="hidden" value="{{$waiting_list->observacion}}">
                 <button class="btn btn-dark btn-sm" type="submit">Seleccionar Hora</button>

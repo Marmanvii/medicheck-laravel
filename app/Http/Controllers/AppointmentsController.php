@@ -68,17 +68,11 @@ class AppointmentsController extends Controller
       return view('appointments.edit', compact('appointments'));
     }
     public function update(Request $request, $id){
-      $appointments = \App\Appointment::find($id);
-      $appointments->id = request('id');
-      $appointments->patient_rut = request('patient_rut');
-      $appointments->fecha = request('fecha');
-      $appointments->bloque = request('bloque');
-      $appointments->medics_id = request('medics_id');
+      $appointments = Appointment::find($id);
+      $appointments->patient_id = request('patient_id');
       $appointments->observacion = request('observacion');
       $appointments->telefono = request('telefono');
-      $appointments->patient_id = request('patient_id');
       $appointments->save();
-
       return redirect('/appointments');
     }
     public function medics_information(){

@@ -36,6 +36,9 @@ Route::get('/appointments/select_medico', 'AppointmentsController@select_medico'
 Route::get('/appointments/select_fecha', 'AppointmentsController@select_fecha');
 Route::any('/appointments/bloques_disponibles', 'AppointmentsController@bloques_disponibles');
 
+Route::post('appointment/update{id}', 'appointmentsController@update');
+
+
 #MÉDICOS#
 Route::get('/medics', 'AppointmentsController@medics_information');
 Route::get('/medic_day', 'AppointmentsController@medics_day');
