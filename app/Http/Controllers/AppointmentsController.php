@@ -91,7 +91,8 @@ class AppointmentsController extends Controller
       $appointments = Appointment::all();
       $files = File::all();
       $users = User::all();
-      return view('appointments.medics_day', compact('appointments','users', 'files'));
+      $schedules = Schedule::all();
+      return view('appointments.medics_day', compact('appointments','users', 'files','schedules'));
     }
     public function show_record(Request $request){
       $patient = $request->patient_id;

@@ -23,45 +23,76 @@ $i = 1;
             <?php
               $i = $i + 1;
             ?>
-            @if ($appointments->bloque == 1)
-              <td>8:30 - 9:00</td>
-            @endif
-            @if($appointments->bloque == 2)
-              <td>9:00 - 9:30</td>
-            @endif
-            @if ($appointments->bloque == 3)
-              <td>9:30 - 10:00</td>
-            @endif
-            @if ($appointments->bloque == 4)
-              <td>10:00 - 10:30</td>
-            @endif
-            @if ($appointments->bloque == 5)
-              <td>10:30 - 11:00</td>
-            @endif
-            @if ($appointments->bloque == 6)
-              <td>11:00 - 11:30</td>
-            @endif
-            @if ($appointments->bloque == 7)
-              <td>11:30 - 12:00</td>
-            @endif
-            @if ($appointments->bloque == 8)
-              <td>12:00 - 12:30</td>
-            @endif
-            @if ($appointments->bloque == 9)
-              <td>12:30 - 13:00</td>
-            @endif
-            @if ($appointments->bloque == 10)
-              <td>15:00 - 15:30</td>
-            @endif
-            @if ($appointments->bloque == 11)
-              <td>15:30 - 16:00</td>
-            @endif
-            @if ($appointments->bloque == 12)
-              <td>16:00 - 16:30</td>
-            @endif
-            @if ($appointments->bloque == 13)
-              <td>16:30 - 17:00</td>
-            @endif
+            @foreach ($schedules as $schedule)
+              @if($schedule->medics_id == $appointments->medics_id)
+                <?php
+                $duracion = $schedule->duracion;
+                $dia = date("w",strtotime($appointments->fecha));
+                ?>
+                @if($dia == '1')
+                  <?php
+                  $atencion = $schedule->lunes;
+                  ?>
+                @endif
+                @if($dia == '2')
+                  <?php
+                  $atencion = $schedule->martes;
+                  ?>
+                @endif
+                @if($dia == '3')
+                  <?php
+                  $atencion = $schedule->miercoles;
+                  ?>
+                @endif
+                @if($dia == '4')
+                  <?php
+                  $atencion = $schedule->jueves;
+                  ?>
+                @endif
+                @if($dia == '5')
+                  <?php
+                  $atencion = $schedule->viernes;
+                  ?>
+                @endif
+                @if($atencion == '1')
+                  <?php
+                    $inicio = strtotime("08:00am");
+                    $final = strtotime("08:00am");
+                    $tiempo = ($duracion*60)*$appointments->bloque;
+                    $inicio = $inicio + $tiempo;
+                    $final = $inicio + ($duracion*60);
+                  ?>
+                @endif
+                @if($atencion == '2')
+                  <?php
+                    $inicio = strtotime("02:00pm");
+                    $final = strtotime("02:00pm");
+                    $tiempo = ($duracion*60)*$appointments->bloque;
+                    $inicio = $inicio + $tiempo;
+                    $final = $inicio + ($duracion*60);
+                  ?>
+                @endif
+                @if($atencion == '3')
+                  <?php
+                    $inicio = strtotime("08:00am");
+                    $final = strtotime("08:00am");
+                    $tiempo = ($duracion*60)*$appointments->bloque;
+                    $inicio = $inicio + $tiempo;
+                    $final = $inicio + ($duracion*60);
+                  ?>
+                  @if($inicio >= strtotime("01:00pm"))
+                    <?php
+                      $inicio = $inicio + 3600;
+                      $final = $final + 3600;
+                    ?>
+                  @endif
+                @endif
+                <td>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</td>
+                <?php
+                  $tiempo = 0;
+                ?>
+              @endif
+            @endforeach
             @foreach ($users as $user)
               @if($user->id == $appointments->patient_id)
                 <td>{{$user->name}} {{$user->last_name}}</td>
