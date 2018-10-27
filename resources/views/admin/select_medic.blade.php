@@ -1,4 +1,7 @@
 @extends('layout.master')
+<?php
+  $encontrado = 0;
+?>
 @section('styles')
 @endsection
 @section('content') <!--Se define como seccion para ser incluido en la seccion contenido en el layout principal-->
@@ -14,7 +17,19 @@
         <select id="medics_id" class="form-control" name="medics_id" required>
           <option value="" disabled selected>Seleccione un médico</option>
           @foreach($medics as $medic) <!--Función de laravel, se busca por fila de la tabla, adquiriendo un medico y sus datos por ciclo, se obtiene desde el controlador, "as" sirve a modo de alias-->
+            @foreach ($schedules as $schedule)
+              @if ($medic->id == $schedule->medics_id)
+                <?php
+                  $encontrado = 1;
+                ?>
+              @endif
+            @endforeach
+            @if ($encontrado == '0')
               <option value="{{$medic->id}}">{{$medic->name}} {{$medic->last_name}}</option>
+            @endif
+            <?php
+              $encontrado = 0;
+            ?>
           @endforeach
         </select>
       </div>

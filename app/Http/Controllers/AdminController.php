@@ -24,6 +24,7 @@ class AdminController extends Controller
     public function select_medic(Request $request){
       $department = $request->department;
       $medics=User::select('id','name','last_name')->where('department_id', $department)->take(100)->get(); #Se seleccionan los medicos pertenecientes al hospital anteriormente seleccionado.
-      return view('admin.select_medic', compact('medics'));
+      $schedules=Schedule::All();
+      return view('admin.select_medic', compact('medics', 'schedules'));
     }
 }
