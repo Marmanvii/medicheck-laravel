@@ -34,7 +34,7 @@
                         <a class="nav-link" href="/certificates/vender_bono">Vender Bono</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/appointments/next_day">Citas Mañana</a>
+                        <a class="nav-link" href="/appointments/next_day">Citas Próximo Día</a>
                     </li>
                   @endif
                   @if(Auth::user()->type=='medic')
