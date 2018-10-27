@@ -78,84 +78,225 @@ $i = 1;
             <td>{{$appointments->telefono}}</td>
             <td>{{$appointments->observacion}}</td>
             <td>{{$appointments->fecha}}</td>
-            <td>{{$appointments->bloque}}</td>
+            @foreach ($schedules as $schedule)
+              @if($schedule->medics_id == $appointments->medics_id)
+                <?php
+                $duracion = $schedule->duracion;
+                $dia = date("w",strtotime($appointments->fecha));
+                ?>
+                @if($dia == '1')
+                  <?php
+                  $atencion = $schedule->lunes;
+                  ?>
+                @endif
+                @if($dia == '2')
+                  <?php
+                  $atencion = $schedule->martes;
+                  ?>
+                @endif
+                @if($dia == '3')
+                  <?php
+                  $atencion = $schedule->miercoles;
+                  ?>
+                @endif
+                @if($dia == '4')
+                  <?php
+                  $atencion = $schedule->jueves;
+                  ?>
+                @endif
+                @if($dia == '5')
+                  <?php
+                  $atencion = $schedule->viernes;
+                  ?>
+                @endif
+                @if($atencion == '1')
+                  <?php
+                    $inicio = strtotime("08:00am");
+                    $final = strtotime("08:00am");
+                    $tiempo = ($duracion*60)*$appointments->bloque;
+                    $inicio = $inicio + $tiempo;
+                    $final = $inicio + ($duracion*60);
+                  ?>
+                @endif
+                @if($atencion == '2')
+                  <?php
+                    $inicio = strtotime("02:00pm");
+                    $final = strtotime("02:00pm");
+                    $tiempo = ($duracion*60)*$appointments->bloque;
+                    $inicio = $inicio + $tiempo;
+                    $final = $inicio + ($duracion*60);
+                  ?>
+                @endif
+                @if($atencion == '3')
+                  <?php
+                    $inicio = strtotime("08:00am");
+                    $final = strtotime("08:00am");
+                    $tiempo = ($duracion*60)*$appointments->bloque;
+                    $inicio = $inicio + $tiempo;
+                    $final = $inicio + ($duracion*60);
+                  ?>
+                  @if($inicio >= strtotime("01:00pm"))
+                    <?php
+                      $inicio = $inicio + 3600;
+                      $final = $final + 3600;
+                    ?>
+                  @endif
+                @endif
+                <td>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</td>
+                <?php
+                  $tiempo = 0;
+                ?>
+              @endif
+            @endforeach
           @endif
           @if(Auth::user()->type=='medic' && Auth::id()==$appointments->medics_id)
             <td>{{$appointments->telefono}}</td>
             <td>{{$appointments->observacion}}</td>
-          @endif
-          <td>{{$appointments->fecha}}</td>
-          @foreach ($schedules as $schedule)
-            @if($schedule->medics_id == $appointments->medics_id)
-              <?php
-              $duracion = $schedule->duracion;
-              $dia = date("w",strtotime($appointments->fecha));
-              ?>
-              @if($dia == '1')
+            <td>{{$appointments->fecha}}</td>
+            @foreach ($schedules as $schedule)
+              @if($schedule->medics_id == $appointments->medics_id)
                 <?php
-                $atencion = $schedule->lunes;
+                $duracion = $schedule->duracion;
+                $dia = date("w",strtotime($appointments->fecha));
                 ?>
-              @endif
-              @if($dia == '2')
-                <?php
-                $atencion = $schedule->martes;
-                ?>
-              @endif
-              @if($dia == '3')
-                <?php
-                $atencion = $schedule->miercoles;
-                ?>
-              @endif
-              @if($dia == '4')
-                <?php
-                $atencion = $schedule->jueves;
-                ?>
-              @endif
-              @if($dia == '5')
-                <?php
-                $atencion = $schedule->viernes;
-                ?>
-              @endif
-              @if($atencion == '1')
-                <?php
-                  $inicio = strtotime("08:00am");
-                  $final = strtotime("08:00am");
-                  $tiempo = ($duracion*60)*$appointments->bloque;
-                  $inicio = $inicio + $tiempo;
-                  $final = $inicio + ($duracion*60);
-                ?>
-              @endif
-              @if($atencion == '2')
-                <?php
-                  $inicio = strtotime("02:00pm");
-                  $final = strtotime("02:00pm");
-                  $tiempo = ($duracion*60)*$appointments->bloque;
-                  $inicio = $inicio + $tiempo;
-                  $final = $inicio + ($duracion*60);
-                ?>
-              @endif
-              @if($atencion == '3')
-                <?php
-                  $inicio = strtotime("08:00am");
-                  $final = strtotime("08:00am");
-                  $tiempo = ($duracion*60)*$appointments->bloque;
-                  $inicio = $inicio + $tiempo;
-                  $final = $inicio + ($duracion*60);
-                ?>
-                @if($inicio >= strtotime("01:00pm"))
+                @if($dia == '1')
                   <?php
-                    $inicio = $inicio + 3600;
-                    $final = $final + 3600;
+                  $atencion = $schedule->lunes;
                   ?>
                 @endif
+                @if($dia == '2')
+                  <?php
+                  $atencion = $schedule->martes;
+                  ?>
+                @endif
+                @if($dia == '3')
+                  <?php
+                  $atencion = $schedule->miercoles;
+                  ?>
+                @endif
+                @if($dia == '4')
+                  <?php
+                  $atencion = $schedule->jueves;
+                  ?>
+                @endif
+                @if($dia == '5')
+                  <?php
+                  $atencion = $schedule->viernes;
+                  ?>
+                @endif
+                @if($atencion == '1')
+                  <?php
+                    $inicio = strtotime("08:00am");
+                    $final = strtotime("08:00am");
+                    $tiempo = ($duracion*60)*$appointments->bloque;
+                    $inicio = $inicio + $tiempo;
+                    $final = $inicio + ($duracion*60);
+                  ?>
+                @endif
+                @if($atencion == '2')
+                  <?php
+                    $inicio = strtotime("02:00pm");
+                    $final = strtotime("02:00pm");
+                    $tiempo = ($duracion*60)*$appointments->bloque;
+                    $inicio = $inicio + $tiempo;
+                    $final = $inicio + ($duracion*60);
+                  ?>
+                @endif
+                @if($atencion == '3')
+                  <?php
+                    $inicio = strtotime("08:00am");
+                    $final = strtotime("08:00am");
+                    $tiempo = ($duracion*60)*$appointments->bloque;
+                    $inicio = $inicio + $tiempo;
+                    $final = $inicio + ($duracion*60);
+                  ?>
+                  @if($inicio >= strtotime("01:00pm"))
+                    <?php
+                      $inicio = $inicio + 3600;
+                      $final = $final + 3600;
+                    ?>
+                  @endif
+                @endif
+                <td>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</td>
+                <?php
+                  $tiempo = 0;
+                ?>
               @endif
-              <td>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</td>
-              <?php
-                $tiempo = 0;
-              ?>
-            @endif
-          @endforeach
-
+            @endforeach
+          @endif
+          @if(Auth::user()->type=='user' && Auth::id()==$appointments->patient_id)
+            <td>{{$appointments->fecha}}</td>
+            @foreach ($schedules as $schedule)
+              @if($schedule->medics_id == $appointments->medics_id)
+                <?php
+                $duracion = $schedule->duracion;
+                $dia = date("w",strtotime($appointments->fecha));
+                ?>
+                @if($dia == '1')
+                  <?php
+                  $atencion = $schedule->lunes;
+                  ?>
+                @endif
+                @if($dia == '2')
+                  <?php
+                  $atencion = $schedule->martes;
+                  ?>
+                @endif
+                @if($dia == '3')
+                  <?php
+                  $atencion = $schedule->miercoles;
+                  ?>
+                @endif
+                @if($dia == '4')
+                  <?php
+                  $atencion = $schedule->jueves;
+                  ?>
+                @endif
+                @if($dia == '5')
+                  <?php
+                  $atencion = $schedule->viernes;
+                  ?>
+                @endif
+                @if($atencion == '1')
+                  <?php
+                    $inicio = strtotime("08:00am");
+                    $final = strtotime("08:00am");
+                    $tiempo = ($duracion*60)*$appointments->bloque;
+                    $inicio = $inicio + $tiempo;
+                    $final = $inicio + ($duracion*60);
+                  ?>
+                @endif
+                @if($atencion == '2')
+                  <?php
+                    $inicio = strtotime("02:00pm");
+                    $final = strtotime("02:00pm");
+                    $tiempo = ($duracion*60)*$appointments->bloque;
+                    $inicio = $inicio + $tiempo;
+                    $final = $inicio + ($duracion*60);
+                  ?>
+                @endif
+                @if($atencion == '3')
+                  <?php
+                    $inicio = strtotime("08:00am");
+                    $final = strtotime("08:00am");
+                    $tiempo = ($duracion*60)*$appointments->bloque;
+                    $inicio = $inicio + $tiempo;
+                    $final = $inicio + ($duracion*60);
+                  ?>
+                  @if($inicio >= strtotime("01:00pm"))
+                    <?php
+                      $inicio = $inicio + 3600;
+                      $final = $final + 3600;
+                    ?>
+                  @endif
+                @endif
+                <td>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</td>
+                <?php
+                  $tiempo = 0;
+                ?>
+              @endif
+            @endforeach
+          @endif
         @endif
             </tr>
       @endforeach

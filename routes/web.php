@@ -35,11 +35,16 @@ Route::get('/appointments/select_area', 'AppointmentsController@select_area');
 Route::get('/appointments/select_medico', 'AppointmentsController@select_medico');
 Route::get('/appointments/select_fecha', 'AppointmentsController@select_fecha');
 Route::any('/appointments/bloques_disponibles', 'AppointmentsController@bloques_disponibles');
+Route::post('appointment/update{id}', 'appointmentsController@wait_list_to_appointment');
+
 
 #MÉDICOS#
 Route::get('/medics', 'AppointmentsController@medics_information');
 Route::get('/medic_day', 'AppointmentsController@medics_day');
 Route::any('/medics/record', 'AppointmentsController@show_record'); # muestra Files y Medications
+
+#SECRETARIA
+Route::get('/appointments/next_day', 'AppointmentsController@next_day');
 
 #FILES#
 Route::any('/medics/filescreate', 'FilesController@create');
@@ -62,3 +67,8 @@ Route::any('/certificates/create', 'CertificatesController@create');
 Route::post('/certificates', 'CertificatesController@store');
 Route::get('/certificates/vender_bono', 'CertificatesController@vender_bono');
 Route::get('/certificates/results_search', 'CertificatesController@results_search');
+
+#WAITING_LISTS
+Route::any('/waiting_list/create', 'Waiting_listsController@create');
+Route::post('/waiting_list', 'Waiting_listsController@store');
+Route::any('/waiting_list_show', 'Waiting_listsController@index');

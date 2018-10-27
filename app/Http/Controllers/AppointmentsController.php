@@ -9,6 +9,7 @@ use App\Schedule;
 use App\File;
 use App\Medication;
 use App\Department;
+use App\Waiting_List;
 
 class AppointmentsController extends Controller
 {
@@ -67,17 +68,15 @@ class AppointmentsController extends Controller
       $appointments = Appointment::all();
       return view('appointments.edit', compact('appointments'));
     }
-    public function update(Request $request, $id){
-      $appointments = \App\Appointment::find($id);
-      $appointments->id = request('id');
-      $appointments->patient_rut = request('patient_rut');
-      $appointments->fecha = request('fecha');
-      $appointments->bloque = request('bloque');
-      $appointments->medics_id = request('medics_id');
+    public function wait_list_to_appointment(Request $request, $id){
+      $appointments = Appointment::find($id);
+      $appointments->patient_id = request('patient_id');
       $appointments->observacion = request('observacion');
       $appointments->telefono = request('telefono');
-      $appointments->patient_id = request('patient_id');
       $appointments->save();
+
+      $waiting_list = Waiting_List::find(request('waiting_list_id'));
+      $waiting_list->delete();
 
       return redirect('/appointments');
     }
@@ -122,4 +121,12 @@ class AppointmentsController extends Controller
       $schedules = Schedule::where('medics_id', $medico)->take(100)->get();
       return view('appointments.bloques_disponibles', compact('medico','fecha','appointments','schedules'));
     }
+    public function next_day(){
+      $appointments = Appointment::all();
+      $users = User::all();
+      $schedules = Schedule::all();
+      return view('appointments.next_day', compact('appointments', 'users', 'schedules'));
+    }
+
+
 }

@@ -3,82 +3,45 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Waiting_List;
+use App\Appointment;
+use App\User;
 
 class Waiting_listsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $cita_id = $request->appointment_id;
+        $inicio = $request->hora_inicio;
+        $final = $request->hora_final;
+        $waiting_list = Waiting_List::All();
+        $users = User::All();
+        return view('waiting_lists.index', compact('cita_id', 'waiting_list', 'inicio', 'final', 'users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Request $request)
     {
-        //
+      $cita_id = $request->cita_id;
+      return view('waiting_lists.create', compact('cita_id'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
-    }
+      $this->validate(request(),[ #Validaciones para los atributos
+      'appointment_id' => 'required',
+      'patient_id' => 'required',
+      'telefono' => 'required|max:16',
+      'observacion' => 'required',
+      ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+      $waiting_list = new Waiting_List;
+      $waiting_list->appointment_id = request('appointment_id');
+      $waiting_list->patient_id = request('patient_id');
+      $waiting_list->telefono = request('telefono');
+      $waiting_list->observacion = request('observacion');
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+      $waiting_list->save();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+      return redirect('/appointments');
     }
 }

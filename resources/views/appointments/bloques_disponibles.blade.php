@@ -6,13 +6,14 @@
   <?php
     $j=0;
   ?>
-  <h3 class="text-center">Seleccionar Fecha</h3>
+  <h3 class="text-center">Seleccionar Bloque de Atención</h3>
   <table class="table table-striped table-bordered table-hover table-sm" style="width:80%; margin:0px auto; text-align:center;">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Horario</th>
         <th scope="col">Acción</th>
+        <th scope="col">Disponibilidad</th>
       </tr>
     </thead>
     <tbody>
@@ -84,17 +85,18 @@
                 @if ($appointment->medics_id == $medico)
                   @if($appointment->fecha == $fecha)
                     @if($appointment->bloque == $j)
-                      <?php $ok = 1 ?>
+                      <?php
+                      $ok = 1;
+                      $cita = $appointment->id;
+                      ?>
                     @endif
                   @endif
                 @endif
               @endforeach
               @if ($ok == 1)
-                <form action="/appointments" method="POST"> <!-- Falta ruta para lista espera -->
+                <form action="/waiting_list/create" method="POST">
                   {{csrf_field()}}
-                  <input name="medics_id" type="hidden" value="{{$medico}}">
-                  <input name="fecha" type="hidden" value="{{$fecha}}">
-                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <input name="cita_id" type="hidden" value="{{$cita}}">
                   <button class="btn btn-dark btn-sm" type="submit">Lista de Espera</button>
                 </form>
               @endif
@@ -108,6 +110,12 @@
                 </form>
               @endif
             </th>
+            @if ($ok == 1)
+              <th>No Disponible</th>
+            @endif
+            @if ($ok == 0)
+              <th>Disponible</th>
+            @endif
           </tr>
           <?php
             $j=$j+1;
@@ -127,17 +135,18 @@
                 @if ($appointment->medics_id == $medico)
                   @if($appointment->fecha == $fecha)
                     @if($appointment->bloque == $j)
-                      <?php $ok = 1 ?>
+                      <?php
+                      $ok = 1;
+                      $cita = $appointment->id;
+                      ?>
                     @endif
                   @endif
                 @endif
               @endforeach
               @if ($ok == 1)
-                <form action="/appointments" method="POST"> <!-- Falta ruta para lista espera -->
+                <form action="/waiting_list/create" method="POST">
                   {{csrf_field()}}
-                  <input name="medics_id" type="hidden" value="{{$medico}}">
-                  <input name="fecha" type="hidden" value="{{$fecha}}">
-                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <input name="cita_id" type="hidden" value="{{$cita}}">
                   <button class="btn btn-dark btn-sm" type="submit">Lista de Espera</button>
                 </form>
               @endif
@@ -177,17 +186,18 @@
                 @if ($appointment->medics_id == $medico)
                   @if($appointment->fecha == $fecha)
                     @if($appointment->bloque == $j)
-                      <?php $ok = 1 ?>
+                      <?php
+                      $ok = 1;
+                      $cita = $appointment->id;
+                      ?>
                     @endif
                   @endif
                 @endif
               @endforeach
               @if ($ok == 1)
-                <form action="/appointments" method="POST"> <!-- Falta ruta para lista espera -->
+                <form action="/waiting_list/create" method="POST">
                   {{csrf_field()}}
-                  <input name="medics_id" type="hidden" value="{{$medico}}">
-                  <input name="fecha" type="hidden" value="{{$fecha}}">
-                  <input name="bloque" type="hidden" value="{{$j}}">
+                  <input name="cita_id" type="hidden" value="{{$cita}}">
                   <button class="btn btn-dark btn-sm" type="submit">Lista de Espera</button>
                 </form>
               @endif
@@ -210,6 +220,4 @@
         @endwhile
       @endif
     </tbody>
-
-
 @endsection
