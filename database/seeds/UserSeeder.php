@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
         'rut' => '2.222.222-2',
         'name' => 'Secretaria',
         'last_name' => 'Secretaria',
-        'email' => 'secre@medica.cl',
+        'email' => 'secretaria@medica.cl',
         'password' => bcrypt('123456'),
         'type' => 'secre',
         'valor' => '0',
