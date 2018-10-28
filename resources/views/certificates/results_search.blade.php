@@ -4,7 +4,7 @@ $i = 1;
 $count = 0;
 ?>
 @section('content')
-  <h3 class="text-center">Venta de Bonos COUNT: {{$count}}</h3>
+  <h3 class="text-center">Venta de Bonos</h3>
   <table class="table table-striped table-bordered table-hover" style="width:80%; margin:0px auto; text-align:center;">
     <thead class="thead-dark">
       <tr>
