@@ -42,8 +42,10 @@ class CertificatesController extends Controller
     public function results_search(Request $request){
       $rut = $request->rut;
       $appointments = Appointment::all();
+      $schedules = Schedule::all();
+      $certificates = Certificate::all();
       $user = User::select('id','rut')->where('rut', $rut)->take(100)->get();
       $medics = User::select('id','name','last_name')->where('type', 'medic')->take(100)->get();
-      return view('certificates.results_search', compact('rut','appointments','user','medics'));
+      return view('certificates.results_search', compact('certificates','schedules','rut','appointments','user','medics'));
     }
 }
