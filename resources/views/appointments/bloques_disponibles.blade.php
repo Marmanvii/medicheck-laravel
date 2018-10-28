@@ -160,6 +160,12 @@
                 </form>
               @endif
             </th>
+            @if ($ok == 1)
+              <th>No Disponible</th>
+            @endif
+            @if ($ok == 0)
+              <th>Disponible</th>
+            @endif
           </tr>
           <?php
             $j=$j+1;
