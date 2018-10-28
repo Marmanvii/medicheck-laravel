@@ -12,7 +12,7 @@ $count = 0;
         <th scope="col">Fecha</th>
         <th scope="col">Bloque</th>
         <th scope="col">Médico</th>
-        <th scope="col">RUT</th>
+        <th scope="col">RUT Paciente</th>
         <th scope="col">Acción</th>
       </tr>
     </thead>
