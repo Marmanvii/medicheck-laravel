@@ -2,7 +2,7 @@
 <?php
 $i = 1;
 $fecha = now()->toDateString(); // obtenemos la fecha actual
-$fecha = strtotime ( '+3 day' , strtotime ( $fecha ) ); // sumamos un día a la fecha actual
+$fecha = strtotime ( '+1 day' , strtotime ( $fecha ) ); // sumamos un día a la fecha actual
 $fecha = date ( 'Y-m-j' , $fecha ); // cambiamos el formato
 ?>
 @section('content')
