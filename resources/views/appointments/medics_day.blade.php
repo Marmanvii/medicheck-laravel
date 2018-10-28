@@ -89,7 +89,7 @@ $i = 1;
                 @endif
                 <td>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</td>
                 <?php
-                  $tiempo = 0;
+                  $tiempo = 0; #Lo hacemos 0 para no usar la duracion restante
                 ?>
               @endif
             @endforeach
