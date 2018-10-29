@@ -17,7 +17,7 @@ $i = 1;
     </thead>
     <tbody>
       @foreach ($appointments as $appointments)
-        @if(Auth::id()==$appointments->medics_id and $appointments->fecha == now()->toDateString())
+        @if(Auth::id()==$appointments->medics_id and $appointments->fecha == now()->toDateString()) <!--Mostramos las citas del día actual -->
           <tr>
             <th scope="row">{{"$i"}}</th>
             <?php

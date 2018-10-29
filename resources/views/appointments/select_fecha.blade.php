@@ -20,7 +20,7 @@
   <tbody>
     <tr>
       @for ($i=1; $i < 31; $i++)
-        @if($dia == '1' || $dia == '2' || $dia == '3' || $dia == '4' || $dia == '5')
+        @if($dia == '1' || $dia == '2' || $dia == '3' || $dia == '4' || $dia == '5') <!-- Realizamos el proceso solo para dóas entre lunes y viernes -->
           <!-- FECHAS -->
           @foreach ($schedules as $schedule)
             @if ($medic == $schedule->medics_id)

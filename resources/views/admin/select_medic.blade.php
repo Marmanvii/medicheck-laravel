@@ -18,17 +18,17 @@
           <option value="" disabled selected>Seleccione un médico</option>
           @foreach($medics as $medic) <!--Función de laravel, se busca por fila de la tabla, adquiriendo un medico y sus datos por ciclo, se obtiene desde el controlador, "as" sirve a modo de alias-->
             @foreach ($schedules as $schedule)
-              @if ($medic->id == $schedule->medics_id)
+              @if ($medic->id == $schedule->medics_id) <!-- Se busca si el médico ya tiene un horario registrado, en tal caso no se puede agragr otro -->
                 <?php
                   $encontrado = 1;
                 ?>
               @endif
             @endforeach
-            @if ($encontrado == '0')
+            @if ($encontrado == '0') <!-- Si no se encuentra el médico se muetra para poder agregar el horario-->
               <option value="{{$medic->id}}">{{$medic->name}} {{$medic->last_name}}</option>
             @endif
             <?php
-              $encontrado = 0;
+              $encontrado = 0; #Se vuelve a 0 la variable para proceder con el siguiente médico
             ?>
           @endforeach
         </select>
