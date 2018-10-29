@@ -72,3 +72,6 @@ Route::get('/certificates/results_search', 'CertificatesController@results_searc
 Route::any('/waiting_list/create', 'Waiting_listsController@create');
 Route::post('/waiting_list', 'Waiting_listsController@store');
 Route::any('/waiting_list_show', 'Waiting_listsController@index');
+
+#PDF
+Route::get('/report/users', 'ReportController@UsersReport');
