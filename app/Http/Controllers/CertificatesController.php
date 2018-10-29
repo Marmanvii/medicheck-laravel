@@ -44,7 +44,7 @@ class CertificatesController extends Controller
       $appointments = Appointment::all();
       $schedules = Schedule::all();
       $certificates = Certificate::all();
-      $user = User::select('id','rut')->where('rut', $rut)->take(100)->get();
+      $user = User::select('id','rut')->where('rut', $rut)->take(100)->get(); #Solo mandaremos el usuario con el rut ingresado en vender_bono
       $medics = User::select('id','name','last_name')->where('type', 'medic')->take(100)->get();
       return view('certificates.results_search', compact('certificates','schedules','rut','appointments','user','medics'));
     }

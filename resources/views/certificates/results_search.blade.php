@@ -1,10 +1,10 @@
 @extends('layout.master')
 <?php
 $i = 1;
-$count = 0;
+$count = 0; #Usaremos el count para determinar si ya se ha vendido un bono para una cita
 ?>
 @section('content')
-  <h3 class="text-center">Venta de Bonos</h3>
+  <h3 class="text-center">Venta de Bonos</h3><!--La busqueda se hace filtrando el usuario en el controlador por su RUT-->
   <table class="table table-striped table-bordered table-hover" style="width:80%; margin:0px auto; text-align:center;">
     <thead class="thead-dark">
       <tr>
@@ -20,20 +20,20 @@ $count = 0;
       @foreach ($user as $user)
         @foreach ($appointments as $appointment)
           @foreach ($certificates as $certificate)
-            @if ($appointment->id == $certificate->appointment_id)
+            @if ($appointment->id == $certificate->appointment_id)<!--De ya existir un bono para una cita, aumentamos el count para decir que ya existe un bono-->
               @php
                 $count = $count+1;
               @endphp
             @endif
           @endforeach
-          @if($count == 0 && $user->id == $appointment->patient_id && $appointment->fecha >= now()->toDateString())
+          @if($count == 0 && $user->id == $appointment->patient_id && $appointment->fecha >= now()->toDateString()) <!--Si no existe el bono, mostramos las posibles citas para vender un bono-->
               <tr>
                 <th scope="row">{{"$i"}}</th>
                 <?php
                   $i = $i + 1;
                 ?>
                 <th scope="row">{{$appointment->fecha}}</th>
-                @foreach ($schedules as $schedule)
+                @foreach ($schedules as $schedule) <!--Explicado en index de appointments-->
                   @if($schedule->medics_id == $appointment->medics_id)
                     <?php
                     $duracion = $schedule->duracion;
