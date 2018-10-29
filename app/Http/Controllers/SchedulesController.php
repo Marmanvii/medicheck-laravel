@@ -13,7 +13,7 @@ class SchedulesController extends Controller
         //
     }
 
-    public function create(Request $request)
+    public function create(Request $request) #Obtengo el id del medico y retorno la vista para ingresar los datos restantes
     {
       $medico = $request->medics_id;
       return view('schedules.create', compact('medico'));

@@ -9,7 +9,7 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run() #se define el órden en que se ejecutarán los seeders al ejecutar el comando correspondiente
     {
         // $this->call(UsersTableSeeder::class);
         $this->call(DepartmentSeeder::class);

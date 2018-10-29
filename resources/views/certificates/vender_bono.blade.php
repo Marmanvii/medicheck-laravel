@@ -8,7 +8,7 @@
     <div class="form-row">
       <div class="col" align="center">
         <div class="form-group col-md-8">
-          <label for="rut">RUT</label>
+          <label for="rut">RUT</label> <!--Obtendremos un RUT para realizar la busqueda-->
           <input type="textarea" class="form-control" id="rut" name="rut"  value="{{ old('rut') }}" required>
         </div>
       </div>

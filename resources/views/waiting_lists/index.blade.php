@@ -64,6 +64,7 @@ $dia= date("w",strtotime($fecha));
                 <input name="telefono" type="hidden" value="{{$waiting_list->telefono}}">
                 <input name="observacion" type="hidden" value="{{$waiting_list->observacion}}">
                 <button class="btn btn-dark btn-sm" type="submit">Seleccionar Hora</button>
+                <!-- En caso de seleccionar desde la lista de espera a la tabla de las citas, se pasan los elementos necesarios para su actualización -->
               </form>
             </th>
           @endif

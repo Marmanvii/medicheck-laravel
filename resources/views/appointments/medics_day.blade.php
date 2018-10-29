@@ -17,7 +17,7 @@ $i = 1;
     </thead>
     <tbody>
       @foreach ($appointments as $appointments)
-        @if(Auth::id()==$appointments->medics_id and $appointments->fecha == now()->toDateString())
+        @if(Auth::id()==$appointments->medics_id and $appointments->fecha == now()->toDateString()) <!--Mostramos las citas del día actual -->
           <tr>
             <th scope="row">{{"$i"}}</th>
             <?php
@@ -89,7 +89,7 @@ $i = 1;
                 @endif
                 <td>{{date("H:i",$inicio)}} - {{date("H:i",$final)}}</td>
                 <?php
-                  $tiempo = 0;
+                  $tiempo = 0; #Lo hacemos 0 para no usar la duracion restante
                 ?>
               @endif
             @endforeach

@@ -69,14 +69,14 @@ class AppointmentsController extends Controller
       return view('appointments.edit', compact('appointments'));
     }
     public function wait_list_to_appointment(Request $request, $id){
-      $appointments = Appointment::find($id);
-      $appointments->patient_id = request('patient_id');
+      $appointments = Appointment::find($id); #buscamos la cita a la que está asociada la lista de espera
+      $appointments->patient_id = request('patient_id'); #actualizmamos los datos
       $appointments->observacion = request('observacion');
       $appointments->telefono = request('telefono');
       $appointments->save();
 
-      $waiting_list = Waiting_List::find(request('waiting_list_id'));
-      $waiting_list->delete();
+      $waiting_list = Waiting_List::find(request('waiting_list_id')); #buscamos el registro de la lista de espera
+      $waiting_list->delete(); # eliminamos de la lista de espera el registro que se insertó en appointments
 
       return redirect('/appointments');
     }
