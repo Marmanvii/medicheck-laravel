@@ -13,7 +13,7 @@ $i = 1;
           <th scope="col">Nombre</th>
         </tr>
       </thead>
-      <tbody {width: 200px; height: 400px; overflow: auto;}>
+      <tbody>
         @foreach ($users as $user)
           <tr>
             <th scope="row">{{"$i"}}</th>
