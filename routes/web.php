@@ -74,4 +74,5 @@ Route::post('/waiting_list', 'Waiting_listsController@store');
 Route::any('/waiting_list_show', 'Waiting_listsController@index');
 
 #PDF
-Route::get('/report/users', 'ReportController@UsersReport');
+Route::get('/report/users/view', 'ReportController@ViewUsersReport');
+Route::get('/report/users/download', 'ReportController@DownloadUsersReport');
