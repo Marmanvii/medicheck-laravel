@@ -2,8 +2,7 @@
 @section('styles')
 @endsection
 @section('content') <!--Se define como seccion para ser incluido en la seccion contenido en el layout principal-->
-  <h1 align="center">Registrar cita</h1>
-  <h2 align="center">Seleccione su médico</h2>
+  <h1 align="center">Seleccionar Médico</h1>
   <div class="card" style="text-align: center;width:80%; margin:0px auto;width: 64rem;">
     <div class="card-body">
   <form action="/report/medics/select_fechas" method="GET" style="text-align: center;width:80%; margin:0px auto;"><!--Luego en el controlador, con request se obtiene este dato-->
@@ -11,7 +10,7 @@
   <div class="form-row">
     <div class="col" align="center">
       <div class="form-group col-md-8">
-        <label for="telefono">Médico</label>
+        <label for="telefono">Médicos</label>
         <select id="medics_id" class="form-control" name="medics_id" required>
           <option value="" disabled selected>Seleccione un médico</option>
           @foreach($medics as $medic) <!--Función de laravel, se busca por fila de la tabla, adquiriendo un medico y sus datos por ciclo, se obtiene desde el controlador, "as" sirve a modo de alias-->
