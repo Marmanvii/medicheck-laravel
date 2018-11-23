@@ -23,7 +23,7 @@ class CreateAppointmentsTable extends Migration
             $table->foreign('medics_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('telefono');
             $table->string('observacion');
-            $table->unique(['patient_id','fecha','bloque','medics_id']);
+            $table->unique(['fecha','bloque','medics_id']);
             $table->timestamps();
         });
     }
