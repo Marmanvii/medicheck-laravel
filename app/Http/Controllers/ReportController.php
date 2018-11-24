@@ -64,5 +64,31 @@ class ReportController extends Controller
     return $pdf->download('medics.pdf'); // descargo el PDF generado
   }
 
+  public function select_fecha_inicio_hospital(){
+    return view('PDF.select_fecha_inicio_hospital');
+  }
+
+  public function select_fecha_final_hospital(Request $request){#Seleccionamos una fecha y medico
+    $fecha_inicial = $request->fecha_inicial;
+    return view('PDF.select_fecha_final_hospital', compact('fecha_inicial'));
+  }
+
+  public function view_ingresos_hospital(Request $request){
+    $inicial = $request->fecha_inicial;
+    $final = $request->fecha_final;
+    $appointments = Appointment::all();
+    $users = User::all();
+    return view('PDF.show_ingresos_hospital', compact('appointments', 'inicial', 'final', 'users'));
+  }
+
+  public function download_hospital_report(Request $request){
+    $inicial = $request->fecha_inicial;
+    $final = $request->fecha_final;
+    $appointments = Appointment::all();
+    $users = User::all();
+    $pdf = PDF::loadView('PDF.hospital_report', compact('appointments', 'inicial', 'final', 'users'));
+    return $pdf->download('hospital.pdf'); // descargo el PDF generado
+  }
+
 
 }
