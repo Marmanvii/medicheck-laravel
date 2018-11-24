@@ -34,10 +34,17 @@ class ReportController extends Controller
     return view('PDF.select_medic', compact('medics'));
   }
 
-  public function select_fechas(Request $request){#Seleccionamos una fecha y medico
+  public function select_fecha_inicial(Request $request){#Seleccionamos una fecha y medico
     $medic = $request->medics_id;
-    return view('PDF.select_fechas', compact('medic'));
+    return view('PDF.select_fecha_inicial', compact('medic'));
   }
+
+  public function select_fecha_final(Request $request){#Seleccionamos una fecha y medico
+    $medic = $request->medics_id;
+    $fecha_inicial = $request->fecha_inicial;
+    return view('PDF.select_fecha_final', compact('medic', 'fecha_inicial'));
+  }
+
   public function view_ingresos(Request $request){
     $medic = $request->medics_id;
     $inicial = $request->fecha_inicial;

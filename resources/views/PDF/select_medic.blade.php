@@ -5,7 +5,7 @@
   <h1 align="center">Seleccionar Médico</h1>
   <div class="card" style="text-align: center;width:80%; margin:0px auto;width: 64rem;">
     <div class="card-body">
-  <form action="/report/medics/select_fechas" method="GET" style="text-align: center;width:80%; margin:0px auto;"><!--Luego en el controlador, con request se obtiene este dato-->
+  <form action="/report/medics/select_fecha_inicial" method="GET" style="text-align: center;width:80%; margin:0px auto;"><!--Luego en el controlador, con request se obtiene este dato-->
   {{ csrf_field() }} <!--Sirve para evitar ataques modificando el html desde el navegador.-->
   <div class="form-row">
     <div class="col" align="center">
