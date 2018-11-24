@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Department;
 use App\Appointment;
+use App\File;
+use App\Medication;
 use PDF;
 
 
@@ -89,6 +91,25 @@ class ReportController extends Controller
     $pdf = PDF::loadView('PDF.hospital_report', compact('appointments', 'inicial', 'final', 'users'));
     return $pdf->download('hospital.pdf'); // descargo el PDF generado
   }
+
+  public function view_history(){
+    $appointments = Appointment::all();
+    $users = User::all();
+    $medications = Medication::all();
+    $files = File::all();
+    return view('PDF.show_history', compact('appointments', 'medications', 'files', 'users'));
+  }
+
+  public function download_history_report(){
+    $appointments = Appointment::all();
+    $users = User::all();
+    $medications = Medication::all();
+    $files = File::all();
+    $pdf = PDF::loadView('PDF.history_report', compact('appointments', 'medications', 'files', 'users'));
+    return $pdf->download('history.pdf'); // descargo el PDF generado
+  }
+
+
 
 
 }
