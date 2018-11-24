@@ -76,3 +76,9 @@ Route::any('/waiting_list_show', 'Waiting_listsController@index');
 #PDF
 Route::get('/report/users/view', 'ReportController@ViewUsersReport');
 Route::get('/report/users/download', 'ReportController@DownloadUsersReport');
+Route::get('/report/medics/select_area', 'ReportController@select_area');
+Route::get('/report/medics/select_medic', 'ReportController@select_medic');
+Route::get('/report/medics/select_fecha_inicial', 'ReportController@select_fecha_inicial');
+Route::get('/report/medics/select_fecha_final', 'ReportController@select_fecha_final');
+Route::get('/report/medics/ingresos', 'ReportController@view_ingresos');
+Route::any('/report/medics/download', 'ReportController@download_medics_report');
