@@ -88,3 +88,6 @@ Route::get('/report/hospital/select_fecha_inicio', 'ReportController@select_fech
 Route::get('/report/hospital/select_fecha_final', 'ReportController@select_fecha_final_hospital');
 Route::get('/report/hospital/ingresos', 'ReportController@view_ingresos_hospital');
 Route::any('/report/hospital/download', 'ReportController@download_hospital_report');
+
+Route::get('/history/show', 'ReportController@view_history');
+Route::any('/report/history/download', 'ReportController@download_history_report');
