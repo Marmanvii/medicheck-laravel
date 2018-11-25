@@ -109,6 +109,19 @@ class ReportController extends Controller
     return $pdf->download('history.pdf'); // descargo el PDF generado
   }
 
+  public function view_historico(){
+    $appointments = Appointment::all();
+    $users = User::all();
+    return view('PDF.view_historico', compact('appointments', 'users'));
+  }
+
+  public function download_historico_report(){
+    $appointments = Appointment::all();
+    $users = User::all();
+    $pdf = PDF::loadView('PDF.historico_report', compact('appointments', 'users'));
+    return $pdf->download('historico.pdf'); // descargo el PDF generado
+  }
+
 
 
 

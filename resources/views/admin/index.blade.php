@@ -8,5 +8,6 @@
 <a class="btn btn-danger" role="main" href="/report/users/view">PDF Usuarios</a> <!-- Botón para probar los PDF-->
 <a class="btn btn-danger" role="main" href="/report/medics/select_area">PDF Ingresos Por Médico</a>
 <a class="btn btn-danger" role="main" href="/report/hospital/select_fecha_inicio">Ingresos del Centro</a>
+<a class="btn btn-danger" role="main" href="/report/hospital/view_historico">Ingresos Históricos</a>
 
 @endsection
