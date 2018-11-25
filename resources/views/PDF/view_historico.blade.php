@@ -1,10 +1,10 @@
 @extends('layout.master')
 <?php
 $i = 1;
-$cantidad = 0;
-$total = 0;
-$acumulado = 0;
-$atenciones = 0;
+$cantidad = 0; #atenciones de cada médico
+$total = 0; #dinero de cada médico
+$acumulado = 0; #dinero de todos los médicos
+$atenciones = 0; #atenciones de todos los médicos (sumadas)
 ?>
 @section('content')
   <h3 class="text-center">Reporte de Ingresos Históricos</h3>

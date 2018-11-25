@@ -66,36 +66,6 @@
                                 @endif
                             </div>
                         </div>
-                        @if(Auth::user())
-                          @if(Auth::user()->type=='admin')
-                            <div class="form-group row">
-                              <label class="col-md-4 col-form-label text-md-right" for="especialidad">Especialidad</label>
-                                <div class="col-md-6">
-                                  <select id="especialidad" class="form-control" name="especialidad" required>
-                                    <option value="" disabled selected>Seleccione una especialidad</option>
-                                    <option value="Oftalmología">Oftalmología</option>
-                                    <option value="Pediatría">Pediatría</option>
-                                    <option value="Psiquiatría">Psiquiatría</option>
-                                    <option value="Cardiología">Cardiología</option>
-                                    <option value="Neurología">Neurología</option>
-                                  </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="valor" class="col-md-4 col-form-label text-md-right">{{ __('Valor') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="valor" type="number" class="form-control{{ $errors->has('valor') ? ' is-invalid' : '' }}" name="valor" value="{{ old('valor') }}" required autofocus>
-
-                                    @if ($errors->has('valor'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('valor') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                          @endif
-                        @endif
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
