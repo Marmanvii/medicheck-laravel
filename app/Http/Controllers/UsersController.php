@@ -40,19 +40,19 @@ class UsersController extends Controller
       {
           $user = new User;
           $user->rut = request('rut');
-          $user->nombre = request('nombre');
+          $user->name = request('name');
           $user->last_name = request('last_name');
           $user->department_id = request('department_id');
           $user->email = request('email');
           $user->type = request('type');
-          $user->password = request('password');
+          $user->password = bcrypt(request('password'));
           $user->valor = request('valor');
 
           $user->save(); #Se adquieren los atributos según el nombre asignado en la vista y se almacenan en la DB.
         }
-        catch(\Exception $e)
+        catch(Exception $e)
         {
-          return back()->withErrors(['Usuario ya registradp.']); #Se obtienen los errores provenientes de la DB para ser mostrados como un error dentro de la vista.
+          return back()->withErrors([$e]); #Se obtienen los errores provenientes de la DB para ser mostrados como un error dentro de la vista.
         }
         return redirect('/appointments');
     }

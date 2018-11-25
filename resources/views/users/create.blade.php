@@ -20,21 +20,12 @@
         <input type="text" class="form-control" id="name" name="name" placeholder="Nombres" value="{{ old('name') }}" required>
       </div>
     </div>
-    @if ($type == 'secre')
-      <div class="col" align="center">
-        <div class="form-group col-md-15">
-          <label for="last_name">Apodo</label>
-          <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Secre1" value="{{ old('last_name') }}" required>
-        </div>
+    <div class="col" align="center">
+      <div class="form-group col-md-15">
+        <label for="last_name">Apellidos</label>
+        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Apellidos" value="{{ old('last_name') }}" required>
       </div>
-    @else
-      <div class="col" align="center">
-        <div class="form-group col-md-15">
-          <label for="last_name">Apellidos</label>
-          <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Apellidos" value="{{ old('last_name') }}" required>
-        </div>
-      </div>
-    @endif
+    </div>
     <div class="col" align="center">
       <div class="form-group col-md-15">
         <label for="password">Contraseña</label>
