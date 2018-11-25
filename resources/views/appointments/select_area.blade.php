@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('content') <!--Se define como seccion para ser incluido en la seccion contenido en el layout principal-->
-  <h1 align="center">Seeccione área médica</h1>
+  <h1 align="center">Seleccione área médica</h1>
   <h2 align="center">Seleccione el área de salud deseada</h2>
   <div class="card" style="text-align: center;width:80%; margin:0px auto;width: 64rem;">
     <div class="card-body">

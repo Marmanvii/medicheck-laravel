@@ -26,6 +26,10 @@ Route::post('/admin', 'AdminController@store');
 Route::get('/admin/select_area', 'AdminController@select_area');
 Route::get('/admin/select_medic', 'AdminController@select_medic');
 
+#ADMIN-USER#
+Route::get('/users/select_type', 'UsersController@select_type');
+Route::get('/users/create', 'UsersController@create');
+Route::post('/users', 'UsersController@store');
 
 #CITAS#
 Route::get('/appointments', 'AppointmentsController@index');
