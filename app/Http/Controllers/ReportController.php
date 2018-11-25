@@ -122,7 +122,20 @@ class ReportController extends Controller
     return $pdf->download('historico.pdf'); // descargo el PDF generado
   }
 
+  public function view_prescription(Request $request){
+    $id_cita = $request->appointment_id;
+    $id_user = $request->patient_id;
+    $users = User::where('id', $id_user)->get();
+    $medications = Medication::where('appointment_id', $id_cita)->get();
+    return view('PDF.view_prescription', compact('id_cita', 'id_user', 'users', 'medications'));
+  }
 
-
-
+  public function download_prescription(Request $request){
+    $id_cita = $request->appointment_id;
+    $id_user = $request->patient_id;
+    $users = User::where('id', $id_user)->get();
+    $medications = Medication::where('appointment_id', $id_cita)->get();
+    $pdf = PDF::loadView('PDF.prescription_report', compact('id_cita', 'id_user', 'users', 'medications'));
+    return $pdf->download('prescription.pdf'); // descargo el PDF generado
+  }
 }

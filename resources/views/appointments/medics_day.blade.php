@@ -129,6 +129,12 @@ $i = 1;
                 <input name="patient_id" type="hidden" value="{{$appointments->patient_id}}">
                 <button class="btn btn-dark btn-sm" type="submit">👀</button>
               </form>
+              <form action="/prescription/view" method="GET">
+                {{csrf_field()}}
+                <input name="appointment_id" type="hidden" value="{{$appointments->id}}">
+                <input name="patient_id" type="hidden" value="{{$appointments->patient_id}}">
+                <button class="btn btn-dark btn-sm" type="submit">📠</button>
+              </form>
             </div>
             </td>
           </tr>
