@@ -91,3 +91,6 @@ Route::any('/report/hospital/download', 'ReportController@download_hospital_repo
 
 Route::get('/history/show', 'ReportController@view_history');
 Route::any('/report/history/download', 'ReportController@download_history_report');
+
+Route::get('/report/hospital/view_historico', 'ReportController@view_historico');
+Route::any('/report/hospital/download_historico', 'ReportController@download_historico_report');
