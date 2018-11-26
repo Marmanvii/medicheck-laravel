@@ -145,7 +145,7 @@ $i = 1;
   <main role="main" class="inner cover text-center">
     <h3></h3>
     <p class="lead">
-      <a href="/appointments" class="btn btn-lg btn-secondary">Volver</a>
+      <a href="/appointments" class="btn btn-danger">Volver</a>
     </p>
   </main>
 @endsection

@@ -11,7 +11,7 @@
         <label for="department">Departamento</label>
         <input type="textarea" class="form-control" id="department" name="department" required>
       </div>
-      <button type="submit" align="center" class="btn">Ingresar</button>
+      <button type="submit" align="center" class="btn btn-primary">Ingresar</button>
   </div>
   </form>
 @include('layout.errors')

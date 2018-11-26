@@ -306,7 +306,7 @@ $i = 1;
   <main role="main" class="inner cover text-center">
     <h3></h3>
     <p class="lead">
-      <a href="/appointments/select_area" class="btn btn-lg btn-secondary">Registrar Nueva Cita</a>
+      <a href="/appointments/select_area" class="btn btn-primary">Registrar Nueva Cita</a>
     </p>
   </main>
 @endsection

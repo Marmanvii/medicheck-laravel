@@ -139,7 +139,7 @@ $count = 0; #Usaremos el count para determinar si ya se ha vendido un bono para 
   <main role="main" class="inner cover text-center">
     <h3></h3>
     <p class="lead">
-      <a href="/appointments" class="btn btn-lg btn-secondary">Volver</a>
+      <a href="/appointments" class="btn btn-danger">Volver</a>
     </p>
   </main>
 @endsection
