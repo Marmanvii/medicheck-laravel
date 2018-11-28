@@ -8,6 +8,10 @@ use App\Schedule;
 
 class SchedulesController extends Controller
 {
+    public function __construct() #Se utiliza el middleware para identificar usuarios activos en la sesión.
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         //

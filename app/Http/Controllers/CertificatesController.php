@@ -10,7 +10,10 @@ use App\Schedule;
 
 class CertificatesController extends Controller
 {
-
+    public function __construct() #Se utiliza el middleware para identificar usuarios activos en la sesión.
+    {
+        $this->middleware('auth');
+    }
     public function create(Request $request){
         $id_cita = $request->appointment_id;
         return view('certificates.create', compact('id_cita'));

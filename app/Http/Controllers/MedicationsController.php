@@ -7,7 +7,10 @@ use App\Medication;
 
 class MedicationsController extends Controller
 {
-
+    public function __construct() #Se utiliza el middleware para identificar usuarios activos en la sesión.
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         //
