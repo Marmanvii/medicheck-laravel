@@ -1,3 +1,8 @@
+@if(Auth::user()->type!='medic')
+  @php
+    header("Location: /appointments")
+  @endphp
+@endif
 @extends('layout.master')
 @section('content')
   <h2 class="text-center">Historial</h2>

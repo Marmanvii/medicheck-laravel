@@ -1,4 +1,4 @@
-@if(Auth::user()->type=='user')
+@if(Auth::user()->type!='secre')
   @php
     header("Location: /appointments")
   @endphp
