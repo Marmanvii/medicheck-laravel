@@ -1,3 +1,8 @@
+@if(Auth::user()->type!='admin')
+  @php
+    header("Location: /appointments")
+  @endphp
+@endif
 @extends('layout.master')
 @section('content')
 <!--<a class="btn btn-danger" role="main" href="/register"zz>Agregar Médico</a> Botón oculto por el momento-->
