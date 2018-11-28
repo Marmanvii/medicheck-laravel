@@ -1,3 +1,8 @@
+@if(Auth::user()->type!='admin')
+  @php
+    header("Location: /appointments")
+  @endphp
+@endif
 @extends('layout.master')
 @section('content') <!--Se define como seccion para ser incluido en la seccion contenido en el layout principal-->
   <h1 align="center">Seleccionar área médica</h1>

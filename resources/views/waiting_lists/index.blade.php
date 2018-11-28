@@ -1,3 +1,8 @@
+@if(Auth::user()->type!='secre')
+  @php
+    header("Location: /appointments")
+  @endphp
+@endif
 @extends('layout.master')
 <?php
 $i = 1;

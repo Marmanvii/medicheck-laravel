@@ -13,11 +13,10 @@ use App\Waiting_List;
 
 class UsersController extends Controller
 {
-
-    public function __construct(){ #Se utiliza el middleware para identificar usuarios activos en la sesión.
-         $this->middleware('auth');
+    public function __construct() #Se utiliza el middleware para identificar usuarios activos en la sesión.
+    {
+        $this->middleware('auth');
     }
-
     public function select_type(){ #Seleccionamos el tipo de usuario que queremos crear
       return view('users.select_type');
     }

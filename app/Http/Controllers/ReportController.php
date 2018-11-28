@@ -13,6 +13,10 @@ use PDF;
 
 class ReportController extends Controller
 {
+    public function __construct() #Se utiliza el middleware para identificar usuarios activos en la sesión.
+    {
+        $this->middleware('auth');
+    }
   public function ViewUsersReport() // Función de ejemplo para uso de PDF
     {
       $users = User::all(); //Cargo la tabla usuarios
