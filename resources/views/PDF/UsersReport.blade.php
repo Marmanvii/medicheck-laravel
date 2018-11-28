@@ -1,3 +1,8 @@
+@if(Auth::user()->type!='admin')
+  @php
+    header("Location: /appointments")
+  @endphp
+@endif
 <?php
 $i = 1;
 ?>
