@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
         'name' => 'Admin',
         'last_name' => 'Admin',
         'email' => 'admin@medica.cl',
-        'password' => bcrypt('123456'),
+        'password' => bcrypt('chinchilla123'),
         'type' => 'admin',
         'valor' => '0',
       ]);
