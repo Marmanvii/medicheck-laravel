@@ -1,3 +1,8 @@
+@if(Auth::user()->type!='medic')
+  @php
+    header("Location: /appointments")
+  @endphp
+@endif
 @foreach ($users as $user)
   @if($user->id == $id_user)
     <h2 class="text-center">Prescripción de {{$user->name}} {{$user->last_name}}</h2>
