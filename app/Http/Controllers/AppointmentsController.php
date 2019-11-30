@@ -10,6 +10,8 @@ use App\File;
 use App\Medication;
 use App\Department;
 use App\Waiting_List;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentsController extends Controller
 {
@@ -31,7 +33,7 @@ class AppointmentsController extends Controller
       $bloque = $request->bloque;
       return view('appointments.create', compact('medico','fecha','bloque'));
     }
-    public function store(){
+    public function store(Request $request){
       $this->validate(request(),[ #Validaciones para los atributos
       'fecha' => 'required|after_or_equal:today',
       'bloque' => 'required',
@@ -56,6 +58,32 @@ class AppointmentsController extends Controller
         {
           return back()->withErrors(['La cita acaba de ser tomada por alguien más.']); #Se obtienen los errores provenientes de la DB para ser mostrados como un error dentro de la vista.
         }
+    
+
+        //// ENVÍO DE EMAIL DE CONFIRMACIÓN ////
+
+        $medic = User::select('name', 'last_name')->where('id', $request->medics_id)->first();
+        $schedule = Schedule::all()->where('medics_id', $request->medics_id)->first();
+        $user_email = Auth::user()->email;
+
+        $data = array(
+          'fecha' => $request->fecha,
+          'bloque' => $request->bloque,
+          'medic' => $medic,
+          'schedule' => $schedule,
+        ); 
+
+        $subject = "MediCheck - Registro de Cita Exitoso";
+        $for = $user_email;
+        Mail::send('emails.confirmation',$data, function($msj) use($subject,$for){
+            $msj->from("medicheckpruebas@gmail.com","Medicheck");
+            $msj->subject($subject);
+            $msj->to($for);
+        });
+        
+        //// ENVÍO DE EMAIL DE CONFIRMACIÓN ////
+
+
         return redirect('/appointments');
     }
     public function destroy($id)
