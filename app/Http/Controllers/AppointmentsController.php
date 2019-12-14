@@ -39,7 +39,7 @@ class AppointmentsController extends Controller
       'bloque' => 'required',
       'medics_id' => 'required',
       'patient_id' => 'required',
-      'telefono' => 'required|max:16',
+      'telefono' => 'required|max:11',
       'observacion' => 'required',
       ]);
       try
@@ -56,7 +56,7 @@ class AppointmentsController extends Controller
         }
         catch(\Exception $e)
         {
-          return back()->withErrors(['La cita acaba de ser tomada por alguien más.']); #Se obtienen los errores provenientes de la DB para ser mostrados como un error dentro de la vista.
+          return back()->withErrors(['La cita acaba de ser tomada por alguien más.' + $e]); #Se obtienen los errores provenientes de la DB para ser mostrados como un error dentro de la vista.
         }
     
 

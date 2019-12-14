@@ -73,5 +73,7 @@
         Fecha: {{$fecha}} <br>
         Horario de Atención: {{date("H:i",$inicio)}} - {{date("H:i",$final)}} <br>
     </h4>
+    <h2>Lo esperamos en 4 norte 3364</h2>
+    <h5>Consultas al número 600222222</h5>
 </body>
 </html>
