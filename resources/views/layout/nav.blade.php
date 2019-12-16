@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/appointments/next_day">Citas Próximo Día</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/news">Administrar Noticias</a>
+                    </li>
                   @endif
                   @if(Auth::user()->type=='medic')
                     <li class="nav-item">

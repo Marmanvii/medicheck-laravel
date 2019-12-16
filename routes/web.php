@@ -101,3 +101,8 @@ Route::any('/report/hospital/download_historico', 'ReportController@download_his
 
 Route::get('/prescription/view', 'ReportController@view_prescription');
 Route::any('/prescription/download', 'ReportController@download_prescription');
+
+#NEWS
+
+Route::any('/news', 'NewsController@index');
+Route::any('/news/create', 'NewsController@create');
