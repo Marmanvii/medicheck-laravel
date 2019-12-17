@@ -104,6 +104,6 @@ Route::any('/prescription/download', 'ReportController@download_prescription');
 
 #NEWS
 
-Route::any('/news', 'NewsController@index');
-Route::any('/news/create', 'NewsController@create');
-Route::post('/news', 'NewsController@store');
+Route::any('/news', 'InfosController@index');
+Route::any('/news/create', 'InfosController@create');
+Route::post('/news', 'InfosController@store');

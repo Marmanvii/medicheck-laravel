@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Info;
 use File;
 use Carbon\Carbon;
 
-class NewsController extends Controller
+class InfosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view ('news.index');
+        return view ('infos.index');
     }
 
     /**
@@ -25,7 +26,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('news.create');
+        return view('infos.create');
     }
 
     /**
@@ -42,16 +43,17 @@ class NewsController extends Controller
 
           $foto = $request->file('foto');
           $extension = $foto->getClientOriginalExtension();
-          $filename = 'news-' . time() . '.' . $extension;
-          $foto = move(public_path('images/news'), $filename);
+          $filename = 'infos-' . time() . '.' . $extension;
+          $foto->move(public_path('images/infos'), $filename);
           
-          $newa = new Newa;
-          $Newa->titulo = request('titulo');
-          $Newa->autor = request('autor');
-          $Newa->cuerpo = request('cuerpo');
-          $Newa->foto = 'images/news' . $filename;
+          $info = new Info;
+          $info->titulo = request('titulo');
+          $info->autor = request('autor');
+          $info->cuerpo = request('cuerpo');
+          $info->foto = 'images/infos/' . $filename;
+          $info->fecha = date('Y-m-d H:i:s');
 
-          $Newa->save();
+          $info->save();
 
         return redirect('/news');
     

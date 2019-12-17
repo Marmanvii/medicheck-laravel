@@ -36,7 +36,7 @@
 
         <div class="form-group">
           <label for="cuerpo"><b>Cuerpo de la Noticia</b></label>
-          <textarea class="form-control" rows="5" id="cuerpo" name="body" value="{{ old('cuerpo') }}" required></textarea>
+          <textarea class="form-control" rows="5" id="cuerpo" name="cuerpo" value="{{ old('cuerpo') }}" required></textarea>
         </div>
         
         <a class="btn btn-danger" role="main" href="/news">Regresar</a>
