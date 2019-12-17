@@ -4,9 +4,9 @@
 <center>
 <div class="card d-inline-flex p-2 justify-content-around align-items-center" style="">
     <div class="card-body" align="center">
-        <button type="button" class="btn">Ingresar Noticia</button>
-        <button type="button" class="btn">Editar Noticia</button>
-        <button type="button" class="btn">Eliminar Noticia</button>
+        <a class="btn" role="main" href="/news/create">Ingresar Noticia</a>
+        <a class="btn" role="main" href="/news">Editar Noticia</a>
+        <a class="btn" role="main" href="/news">Eliminar Noticia</a>
     </div>
   </div>
 </center>

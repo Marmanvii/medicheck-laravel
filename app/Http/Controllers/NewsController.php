@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use File;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -34,7 +36,25 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(),[ #Validaciones para los atributos
+      'foto' => 'image|mimes:jpeg,jpg,png,gif|max:2048|required'
+      ]);
+
+          $foto = $request->file('foto');
+          $extension = $foto->getClientOriginalExtension();
+          $filename = 'news-' . time() . '.' . $extension;
+          $foto = move(public_path('images/news'), $filename);
+          
+          $newa = new Newa;
+          $Newa->titulo = request('titulo');
+          $Newa->autor = request('autor');
+          $Newa->cuerpo = request('cuerpo');
+          $Newa->foto = 'images/news' . $filename;
+
+          $Newa->save();
+
+        return redirect('/news');
+    
     }
 
     /**

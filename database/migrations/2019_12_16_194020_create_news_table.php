@@ -20,6 +20,7 @@ class CreateNewsTable extends Migration
             $table->strings('autor');
             $table->strings('cuerpo');
             $table->date('fecha'); #Vere si timestamps sirve mejor
+            $table->string('foto')->default('');
         });
     }
 
