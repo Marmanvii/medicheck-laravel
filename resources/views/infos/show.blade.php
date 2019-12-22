@@ -16,5 +16,11 @@
         </div>
     </div>
   </div>
+  <main role="main" class="inner cover text-center">
+    <h3></h3>
+    <p class="lead">
+      <a href="/" class="btn btn-danger">Volver</a>
+    </p>
+  </main>
 </center>
 @endsection
