@@ -127,6 +127,4 @@ class AppointmentsController extends Controller
       $schedules = Schedule::all();
       return view('appointments.next_day', compact('appointments', 'users', 'schedules'));
     }
-
-
 }

@@ -67,7 +67,8 @@ class InfosController extends Controller
      */
     public function show($id)
     {
-        //
+        $info = Info::find($id);
+        return view('infos.show', compact('info'));
     }
 
     /**
@@ -101,6 +102,6 @@ class InfosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
