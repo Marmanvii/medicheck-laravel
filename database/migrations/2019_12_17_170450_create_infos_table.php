@@ -16,10 +16,10 @@ class CreateInfosTable extends Migration
         Schema::create('infos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('foto')->nullable();
+            $table->string('titulo');
             $table->string('autor');
             $table->longtext('cuerpo');
-            $table->string('titulo');
+            $table->string('foto')->nullable();
             $table->date('fecha');
         });
     }
