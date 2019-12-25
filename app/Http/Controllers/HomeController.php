@@ -21,7 +21,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $infos = Info::orderBy('fecha')->orderBy('fecha', 'asc')->take(3)->get();
+        $infos = Info::orderBy('fecha', 'desc')->take(3)->get();
         return view('home.index', compact('infos'));
     }
 }

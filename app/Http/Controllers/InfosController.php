@@ -16,7 +16,8 @@ class InfosController extends Controller
      */
     public function index()
     {
-        return view ('infos.index');
+        $infos = Info::orderBy('fecha', 'desc')->get();
+        return view ('infos.index', compact('infos'));
     }
 
     /**
@@ -103,5 +104,10 @@ class InfosController extends Controller
     public function destroy($id)
     {
         
+    }
+
+    public function s_menu()
+    {
+        return view ('infos.s_menu', compact('infos'));
     }
 }
