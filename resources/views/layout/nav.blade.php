@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
-        <a class="navbar-brand" href="/appointments">
+        <a class="navbar-brand" href="/">
             MediCheck
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -35,6 +35,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/appointments/next_day">Citas Próximo Día</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/news/menu">Administrar Noticias</a>
                     </li>
                   @endif
                   @if(Auth::user()->type=='medic')

@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 #ADMIN#
 Route::get('/admin', 'AdminController@index');
@@ -101,3 +101,15 @@ Route::any('/report/hospital/download_historico', 'ReportController@download_his
 
 Route::get('/prescription/view', 'ReportController@view_prescription');
 Route::any('/prescription/download', 'ReportController@download_prescription');
+
+#NEWS
+
+Route::any('/news', 'InfosController@index');
+Route::any('/news/menu', 'InfosController@s_menu');
+Route::any('/news/create', 'InfosController@create');
+Route::post('/news', 'InfosController@store');
+Route::get('/news/{id}', [
+    'uses' => 'InfosController@show',
+    'as'   => 'infos.show']
+);
+
